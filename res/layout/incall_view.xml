@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- callActivity의 리스트에 들어가는 커스텀 리스트뷰 -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/listPreferredItemHeight"
+                style="@style/listViewActivatedStyle">
+    
+    <!-- Use standard android.R class icon id instead of app specific id. This is just useful for
+         consistency. Use scaleType=centerCrop to give a nice full cropped image in the assigned
+         space -->    
+    <QuickContactBadge android:id="@android:id/icon"
+                       android:layout_height="?android:attr/listPreferredItemHeight"
+                       android:layout_width="?android:attr/listPreferredItemHeight"
+                       android:scaleType="centerCrop"
+                       style="@style/quickContactBadgeStyle"
+                       android:src="@drawable/ic_contact_picture_holo_light"/>    
+                       
+    
+    
+    <TextView android:id="@+id/call_value"
+              android:paddingLeft="@dimen/listview_item_padding"
+              android:paddingRight="@dimen/listview_item_padding"
+              android:layout_width="match_parent"
+              android:layout_height="26dp"
+              android:layout_toRightOf="@android:id/icon"
+              android:layout_alignParentBottom="true"
+              android:layout_alignParentRight="true"
+              android:fontFamily="sans-serif"
+              android:singleLine="true"
+              android:ellipsize="marquee"
+              
+              android:text="text2"
+              android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+    <!-- Use standard android.R class text1 id instead of app specific id. This is just useful for
+         consistency. This view also sets layout_alignWithParentIfMissing=true which lets the view
+         align with the parent view if the text2 view is not part of the view hierarchy (which is
+         its initial state). -->
+    <TextView android:id="@+id/call_name"
+              android:paddingLeft="@dimen/listview_item_padding"
+              android:paddingRight="@dimen/listview_item_padding"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_above="@id/call_name"
+              android:layout_toRightOf="@android:id/icon"
+              android:gravity="center_vertical"
+              android:layout_alignParentRight="true"
+              android:layout_alignParentTop="true"
+              android:layout_alignWithParentIfMissing="true"
+              android:fontFamily="sans-serif-light"
+              android:singleLine="true"
+              android:ellipsize="marquee"
+              android:textAppearance="?android:attr/textAppearanceLarge"/>    
+    
+    
+    <ImageView
+        android:id="@+id/call_image"
+        android:layout_width="25dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="false"
+        android:layout_margin="5px"
+        android:layout_weight="1"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/call_rank"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="10px"
+        android:layout_weight="1" 
+        android:visibility="gone"
+        />
+
+ 
+ 
+    <TextView
+        android:id="@+id/call_name1"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10px"
+ 		
+        android:layout_toRightOf="@android:id/icon"
+        android:layout_weight="8" 
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/call_value1"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10px"
+        android:layout_toRightOf="@id/call_name"
+        android:layout_weight="2" 
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/call_percent"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10px"
+        android:layout_toRightOf="@id/call_value"
+        android:layout_weight="2"
+        android:visibility="gone"
+        />
+
+</RelativeLayout>
+
+

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, TongActivity!</string>
+    <string name="app_name">Tong</string>
+    <string name="choose_call_opt">원하는 통화옵션을 선택하세요</string>
+
+    <!-- 차트에서 X 축의 각 항목 이름 -->
+    <string name="mon">월요일</string>
+    <string name="tus">화요일</string>
+    <string name="wed">수요일</string>
+    <string name="thr">목요일</string>
+    <string name="fri">금요일</string>
+    <string name="sat">토요일</string>
+    <string name="sun">일요일</string>
+
+    <string-array name="call_choice">
+        <item>전체 통화 길이</item>
+        <item>수신길이 순위</item>
+        <item>수신 평균 길이 순위</item>
+        <item>발신횟수 순위</item>
+        <item>발신길이 순위</item>
+        <item>발신 평균 길이 순위</item>
+        <item>부재횟수 순위</item>
+    </string-array>
+    <string-array name="chart_choice">
+        <item>요일별 통화 길이</item>
+        <item>일별 통화 길이</item>
+    </string-array>
+    
+        <string-array name="themeArray">
+        <item>흰색</item>
+        <item>검정색</item>
+    </string-array>
+    <string-array name="languageArray">
+        <item>영어</item>
+        <item>한국어</item>
+    </string-array>
+    <string-array name="listValues">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string name="history">   "Version : 2.2 (2013/11/17)\n"
+							 "1. \n"
+							 "2. ICS 버전 이상 지원\n"
+							 "3. 영문버전 개선\n"
+							 "3. 제스처 이동\n"
+							 "4. 배경 가독성 증가\n\n"
+							 
+							 "Version : 2.2 (2013/10/27)\n"
+							 "1. 테마 변경\n"
+							 "2. 허니콤 버전 이상 지원\n"
+							 "3. 영문버전 개선\n"
+							 "4. 차트 가독성 증가\n\n"
+							
+							"Version : 2.11 (2012/06/06)\n"
+							 "1. 인물통계의 속성제목의 강조효과\n"
+							 "2. 별점 평가값 조정\n"
+							 "3. 프로그램의 용량 감소\n\n"
+							
+							"Version : 2.1 (2012/05/20)\n"
+							 "1. 대화상자의 디자인 변경\n"
+							 "2. 인물평가 추가\n\n"
+							
+							"Version : 2.0 (2012/05/04)\n"
+							 "1. 전반적인 디자인 테마 색상 변경\n"
+							 "2. 그래프 디자인 변경\n"  "3. 대화상자 추가\n"
+							 "4. 스피너 크기 확대\n"  "5. 탭 아이콘 변경\n\n"
+
+							 "Version : 1.04 (2012/04/05)\n"
+							 "1. 랭킹시스템 추가\n"
+							 "2. 문자통계 삭제\n\n"
+				
+							 "Version : 1.03 (2012/03/10)\n"
+							 "1. 강제종료 버그 수정\n"
+							 "2. 원 그래프 크기 조정\n\n"
+							
+							 "Version : 1.00 (2012/03/09)\n"
+							 "1. 메뉴 탭 추가\n"
+							 "2. 순위 버그 수정\n"</string>
+    <string name="more">							"♣ 추천 요금제\n"
+							 "♣ 누적 순위 조정\n"
+							 "♣ DB 백업\n"
+							 "♣ 한달 간격 그래프\n"
+							 "♣ 피드백\n"
+							 "♣ 문자 통계\n"
+							 "♣ 카톡 통계\n"
+							 "♣ 페이스북 연동\n"
+							 "♣ 그 외 수많은 기능..\n"</string>
+    <string name="information">정보</string>
+     <string name="preference">설정</string>
+    <string name="title_section1">통계</string>
+    <string name="title_section2">그래프</string>
+
+           <string name="language">언어</string>
+        <string name="english">영어</string>
+         <string name="korean">한국어</string>
+          <string name="theme">테마</string>
+           <string name="white">흰색</string>
+            <string name="black">검정색</string>
+    
+</resources>

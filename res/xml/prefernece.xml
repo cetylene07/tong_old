@@ -1,0 +1,16 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory>
+        <ListPreference
+            android:entries="@array/themeArray"
+            android:entryValues="@array/listValues"
+            android:key="pref_theme"
+            android:title="@string/theme" />
+        <ListPreference
+            android:entries="@array/languageArray"
+            android:entryValues="@array/listValues"
+            android:key="pref_language"
+            android:title="@string/language" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

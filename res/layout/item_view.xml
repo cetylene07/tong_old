@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#b5c8d2"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/dialogName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:text="0100000000"
+        android:textColor="#f6f7ef"
+        android:textSize="30sp"
+        android:layout_weight="3" />
+
+    <TextView
+        android:id="@+id/critic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5sp"
+        android:padding="5sp"
+        android:text="측정불가..."
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:visibility="gone"
+        android:layout_weight="1"  />
+
+    <RatingBar
+        android:id="@+id/ratingbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:isIndicator="true"
+        android:numStars="4"
+        android:layout_weight="2"  />
+
+    <TextView
+        android:id="@+id/dialogText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="주요내용들.."
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_weight="5"  />
+
+</LinearLayout>

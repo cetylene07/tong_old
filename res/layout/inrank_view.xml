@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="60px"
+    android:padding="5px" >
+
+    <TextView
+        android:id="@+id/rank_rank"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10px"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/rank_name"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10px"
+        android:layout_toRightOf="@id/rank_rank"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/rank_gold"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10px"
+        android:layout_toRightOf="@id/rank_name"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/rank_silver"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10px"
+        android:layout_toRightOf="@id/rank_gold"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/rank_bronze"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10px"
+        android:layout_toRightOf="@id/rank_silver"
+        android:layout_weight="1" />
+
+</RelativeLayout>

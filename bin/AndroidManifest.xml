@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hb.app.tong"
+    android:versionCode="220"
+    android:versionName="2.2" >
+
+    <!-- 안드로이드 2.1(Level 7)부터 설치가능...하지만 이 프로그램은 2.3(Level 10)을 기준으로 작성됨 -->
+    <uses-sdk android:minSdkVersion="13" />
+
+    <!-- 퍼미션을 설정하는 곳 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:debuggable="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Holo.Light" >
+        <activity
+            android:name="com.hb.app.tong.TongActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.hb.app.tong.CallListActivity"
+            android:label="callActivity" />
+        <activity
+            android:name="com.hb.app.tong.textActivity"
+            android:label="textActivity" />
+        <activity
+            android:name="com.hb.app.tong.Report"
+            android:label="report" />
+        <activity
+            android:name="com.hb.app.tong.SettingActivity"
+            android:label="about" />
+        <activity
+            android:name="com.hb.app.tong.Rank"
+            android:label="rank" />
+        <activity
+            android:name="com.hb.app.tong.GraphActivity"
+            android:label="TimeActivity" />
+        <activity
+            android:name="com.hb.app.tong.extendActivity"
+            android:label="ExtendActivity" />
+
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.SAMPLE_CODE" />
+        </intent-filter>
+        <!-- </activity> -->
+        <activity
+            android:name="com.hb.app.tong.PrefActivity"
+            android:label="@string/title_activity_preference" >
+        </activity>
+        <activity
+            android:name="com.hb.app.tong.SetPreferenceActivity"
+            android:label="@string/title_activity_set_preference" >
+        </activity>
+    </application>
+
+</manifest>
