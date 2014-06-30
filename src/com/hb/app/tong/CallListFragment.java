@@ -1,10 +1,11 @@
 /*
- * ÅëÈ­ ºÐ¼® È­¸é
+ * ï¿½ï¿½È­ ï¿½Ð¼ï¿½ È­ï¿½ï¿½
  */
 package com.hb.app.tong;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -35,16 +36,16 @@ import com.smartstat.info.DateInfo;
 import com.smartstat.info.Info;
 import com.smartstat.listadapter.TotalDurationListAdapter;
 
-public class CallListFragment extends Fragment {
+public class CallListFragment extends Fragment  {
 	/**
 	 * @uml.property  name="list"
 	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="com.smartstat.info.Info"
 	 */
-	ArrayList<Info> list = new ArrayList<Info>(); // Åë°èÁ¤º¸¸¦ µ¿Àû¸®½ºÆ®·Î °´Ã¼ »ý¼º
+	ArrayList<Info> list = new ArrayList<Info>(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½
 	/**
 	 * @uml.property  name="temp_list"
 	 */
-	ArrayList<Info> temp_list = new ArrayList<Info>(); // Åë°èÁ¤º¸¸¦ µ¿Àû¸®½ºÆ®·Î °´Ã¼ »ý¼º
+	ArrayList<Info> temp_list = new ArrayList<Info>(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½
 
 	/**
 	 * @uml.property  name="date_list"
@@ -66,15 +67,15 @@ public class CallListFragment extends Fragment {
 	/**
 	 * @uml.property  name="total_average_in_dur"
 	 */
-	double total_average_in_dur = 0; // Æò±Õ ¼ö½Å ±æÀÌ ÃÑÇÕ
+	double total_average_in_dur = 0; // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	/**
 	 * @uml.property  name="total_average_out_dur"
 	 */
-	double total_average_out_dur = 0; // Æò±Õ ¹ß½Å ±æÀÌ ÃÑÇÕ
+	double total_average_out_dur = 0; // ï¿½ï¿½ï¿½ ï¿½ß½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	/**
 	 * @uml.property  name="total_average_sum_dur"
 	 */
-	double total_average_sum_dur = 0; // Æò±Õ ¼ö¹ß½Å ±æÀÌ ÃÑÇÕ
+	double total_average_sum_dur = 0; // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	/**
 	 * @uml.property  name="total_indur"
 	 */
@@ -100,7 +101,7 @@ public class CallListFragment extends Fragment {
 	 */
 	boolean uri_found = false;
 
-	// ±×³É ¾Æ¹«·¸°Ô³ª ¾²´Â ÀÓ½Ã º¯¼ö
+	// ï¿½×³ï¿½ ï¿½Æ¹ï¿½ï¿½ï¿½ï¿½Ô³ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	/**
 	 * @uml.property  name="tmp1"
 	 */
@@ -109,15 +110,15 @@ public class CallListFragment extends Fragment {
 	/**
 	 * @uml.property  name="name"
 	 */
-	String name; // ÀÌ¸§
+	String name; // ï¿½Ì¸ï¿½
 	/**
 	 * @uml.property  name="number"
 	 */
-	String number; // ÀüÈ­¹øÈ£
+	String number; // ï¿½ï¿½È­ï¿½ï¿½È£
 	/**
 	 * @uml.property  name="date"
 	 */
-	long date; // ÅëÈ­ ³¯Â¥
+	long date; // ï¿½ï¿½È­ ï¿½ï¿½Â¥
 
 	/**
 	 * @uml.property  name="sdate"
@@ -137,10 +138,10 @@ public class CallListFragment extends Fragment {
 	LinearLayout linear;
 
 	final static int itemView = 0;
-	static int itemPosition = 0;// ¸®½ºÆ®¸¦ ´­·¶À» ¶§ À§Ä¡
+	static int itemPosition = 0;// ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Ä¡
 
 	// 5.16
-	// ÀÌ¹ÌÁö¸¦ ºÒ·¯¿À±â À§ÇØ¼­ ¼±¾ð
+	// ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½
 	/**
 	 * @uml.property  name="cONTACTS_PROJECTION" multiplicity="(0 -1)" dimension="1"
 	 */
@@ -164,7 +165,7 @@ public class CallListFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		// list ÃÊ±âÈ­
+		// list ï¿½Ê±ï¿½È­
 		for (int i = 0; i < list.size(); i++)
 			list.remove(i);
 		return inflater.inflate(R.layout.fragment_call_list, container, false);
@@ -174,16 +175,21 @@ public class CallListFragment extends Fragment {
 		super.onStart();
 		// setContentView(R.layout.activity_call);
 
+        //2014.06.30
+        //fix duplicate data when resume activity
+        temp_list.clear();
+        list.clear();
+
 		// 5.16
 		linear = (LinearLayout) View.inflate(getActivity(), R.layout.item_view,
-				null);// View¸¦ ºÒ·¯¿É´Ï´Ù.
-		// import android.provider.ContactsContract ÇÊ¿ä
-		Uri uContactsUri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI; // ÁÖ¼Ò·ÏÀÌ
-																				// ÀúÀåµÈ
+				null);// Viewï¿½ï¿½ ï¿½Ò·ï¿½ï¿½É´Ï´ï¿½.
+		// import android.provider.ContactsContract ï¿½Ê¿ï¿½
+		Uri uContactsUri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI; // ï¿½Ö¼Ò·ï¿½ï¿½ï¿½
+																				// ï¿½ï¿½ï¿½ï¿½ï¿½
 																				// Uri
 
 		/*
-		 * updating 2013.11.12 ¿ùº° °Ë»ö ±â´É Ãß°¡ÇÏ·Á°í ÇÔ
+		 * updating 2013.11.12 ï¿½ï¿½ ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½ï¿½
 		 */
 		Button btnBeforeMonth = (Button) getView().findViewById(
 				R.id.btnBeforeMonth);
@@ -210,45 +216,45 @@ public class CallListFragment extends Fragment {
 		Cursor cursor = cr.query(CallLog.Calls.CONTENT_URI, null, null, null,
 				CallLog.Calls.DATE + " DESC");
 
-		if (cursor.moveToNext()) // content:sms ÀÇ Uri¸¦ °¡Áö¸é ¼º°øÀûÀ¸·Î Uri¸¦ ¹ß°ßÇÑ °ÍÀ¸·Î ¼³Á¤
+		if (cursor.moveToNext()) // content:sms ï¿½ï¿½ Uriï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Uriï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			uri_found = true;
 
 		if (uri_found == true) {
 
 			int ididx = cursor.getColumnIndex(ContactsContract.Contacts._ID);
 
-			// ÅëÈ­´ë»óÀÚ(ÀÌ¸§)
+			// ï¿½ï¿½È­ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½Ì¸ï¿½)
 			int nameidx = cursor.getColumnIndex(CallLog.Calls.CACHED_NAME);
 
-			// ÅëÈ­ ½ÃÁ¡(0.001ÃÊ ´ÜÀ§ÀÇ Àý´ë½Ã°£)
+			// ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½(0.001ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã°ï¿½)
 			int dateidx = cursor.getColumnIndex(CallLog.Calls.DATE);
 
-			// ÀüÈ­¹øÈ£
+			// ï¿½ï¿½È­ï¿½ï¿½È£
 			int numidx = cursor.getColumnIndex(CallLog.Calls.NUMBER);
 
-			// ÅëÈ­½Ã°£
+			// ï¿½ï¿½È­ï¿½Ã°ï¿½
 			int duridx = cursor.getColumnIndex(CallLog.Calls.DURATION);
 
-			// ÅëÈ­Á¾·ù(¼ö½Å,¹ß½Å,ºÎÀçÁß)
+			// ï¿½ï¿½È­ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½,ï¿½ß½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 			int typeidx = cursor.getColumnIndex(CallLog.Calls.TYPE);
 
-			boolean found = false; // °°Àº ÀÌ¸§À» Ã£À¸¸é ´©ÀûÈ½¼ö¸¦ Áõ°¡½ÃÅ²´Ù. Ã£Áö¸øÇÏ¸é ¸®½ºÆ®¿¡ Ãß°¡
+			boolean found = false; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å²ï¿½ï¿½. Ã£ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ß°ï¿½
 
 			SimpleDateFormat formatter = new SimpleDateFormat("MM/dd HH:mm");
 
-			int where = 0; // list¿¡ ÇöÀç ÀÌ¸§°ªÀÌ ¾îµð¿¡ ÀÖ´ÂÁö È®ÀÎ
+			int where = 0; // listï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 
-			while (cursor.moveToNext()) { // cursor°¡ ÀÐÁö ¸øÇÒ ¶§ ±îÁö ¹Ýº¹
+			while (cursor.moveToNext()) { // cursorï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ýºï¿½
 
-				// ÅëÈ­ ´ë»óÀÚ
+				// ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ï¿½
 				Info temp = new Info();
-				Iterator<Info> it = list.iterator(); // iterator·Î º¯È¯
+				Iterator<Info> it = list.iterator(); // iteratorï¿½ï¿½ ï¿½ï¿½È¯
 
-				name = cursor.getString(nameidx); // ÀÌ¸§À» ¹®ÀÚ¿­·Î º¯È¯
+				name = cursor.getString(nameidx); // ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
 				number = cursor.getString(numidx);
 
 				if (name == null) {
-					name = cursor.getString(numidx); // ÀÌ¸§ÀÌ ÀúÀåµÇÁö ¾ÊÀ¸¸é ¹øÈ£·Î ÀúÀå
+					name = cursor.getString(numidx); // ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				}
 
 				temp.setName(name);
@@ -257,13 +263,13 @@ public class CallListFragment extends Fragment {
 				where = 0;
 				while (it.hasNext()) {
 					Info data = it.next();
-					if (data.getName().equals(name)) { // list¿¡ ÀÖ´Â ¿ø¼Ò Áß ÀÌ¸§ÀÌ °°Àº
-														// °ÍÀ» Ã£À¸¸é
+					if (data.getName().equals(name)) { // listï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+														// ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ï¿½ï¿½
 						found = true;
 
 						/*
-						 * dataÀÇ ÁÖ¼Ò¸¦ temp¿¡ ÀúÀå½ÃÅ²´Ù µû¶ó¼­ temp¿¡¼­ ÇÊµå¸¦ ¿¬»êÇÏ¸é ÀÌ°Ô data¿¡¼­
-						 * µ¿½Ã¿¡ ¿¬»êµÇ´Â °Å¶û ¸¶Âù°¡Áö! ¤»¤» »ý°¢ÇÏÁöµµ ¸øÇÑ °Å¿´´Âµ¥ ¿ì¿Õ¤» ±» ¤»
+						 * dataï¿½ï¿½ ï¿½Ö¼Ò¸ï¿½ tempï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Å²ï¿½ï¿½ ï¿½ï¿½ï¿½ tempï¿½ï¿½ï¿½ï¿½ ï¿½Êµå¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½Ì°ï¿½ dataï¿½ï¿½ï¿½ï¿½
+						 * ï¿½ï¿½ï¿½Ã¿ï¿½ ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½Å¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½! ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¿ï¿½ï¿½Âµï¿½ ï¿½ï¿½Õ¤ï¿½ ï¿½ï¿½ ï¿½ï¿½
 						 */
 
 						temp = data;
@@ -272,14 +278,14 @@ public class CallListFragment extends Fragment {
 					where++;
 				}
 
-				// ÅëÈ­ Á¾·ù
+				// ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½
 				int type = cursor.getInt(typeidx);
 				// row.put("type", type);
 
 				String stype;
 				switch (type) {
 				case CallLog.Calls.INCOMING_TYPE:
-					stype = "¼ö½Å";
+					stype = "ï¿½ï¿½ï¿½ï¿½";
 					total_incall_count++;
 					total_indur += cursor.getInt(duridx);
 
@@ -290,62 +296,62 @@ public class CallListFragment extends Fragment {
 					break;
 				case CallLog.Calls.OUTGOING_TYPE:
 					total_outcall_count++;
-					stype = "¹ß½Å";
+					stype = "ï¿½ß½ï¿½";
 					temp.inCreaseOutCount();
 					total_outdur += cursor.getInt(duridx);
 					temp.setOut_dur(temp.getOut_dur() + cursor.getInt(duridx));
 					temp.setSum_dur(temp.getSum_dur() + cursor.getInt(duridx));
 					break;
 				case CallLog.Calls.MISSED_TYPE:
-					stype = "ºÎÀçÁß";
+					stype = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 					total_miss++;
 					temp.inCreaseMissCount();
 					break;
 
 				}
 
-				// ÅëÈ­ ³¯Â¥
+				// ï¿½ï¿½È­ ï¿½ï¿½Â¥
 				long date = cursor.getLong(dateidx);
 				// row.put("date", date);
 
 				sdate = formatter.format(new Date(date));
 
-				// ÅëÈ­ ½Ã°£
+				// ï¿½ï¿½È­ ï¿½Ã°ï¿½
 				int duration = cursor.getInt(duridx);
 				// row.put("duration", duration);
 
 				if (found == false) {
-					list.add(temp); // »õ·Î Ãß°¡
+					list.add(temp); // ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 				}
 
 			}
 			total_dur = total_indur + total_outdur;
 
 			for (int i = 0; i < list.size(); i++) {
-				// °´Ã¼ÀÇ ºñÀ² °è»ê
+				// ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 				list.get(i).setIncount_percent(
-						list.get(i).getIn_count() / total_incall_count * 100); // ¼ö½Å
-																				// È½¼ö
-																				// ºñÀ²
+						list.get(i).getIn_count() / total_incall_count * 100); // ï¿½ï¿½ï¿½ï¿½
+																				// È½ï¿½ï¿½
+																				// ï¿½ï¿½ï¿½ï¿½
 				list.get(i).indur_percent = list.get(i).in_dur / total_indur
-						* 100; // ¼ö½Å±æÀÌºñÀ²
+						* 100; // ï¿½ï¿½ï¿½Å±ï¿½ï¿½Ìºï¿½ï¿½ï¿½
 				list.get(i).outcount_percent = list.get(i).out_count
-						/ total_incall_count * 100; // ¹ß½Å È½¼ö ºñÀ²
+						/ total_incall_count * 100; // ï¿½ß½ï¿½ È½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				list.get(i).outdur_percent = list.get(i).out_dur / total_outdur
-						* 100; // ¹ß½Å ±æÀÌ ºñÀ²
+						* 100; // ï¿½ß½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				list.get(i).miss_percent = list.get(i).miss_count / total_miss
-						* 100; // ºÎÀç È½¼ö ºñÀ²
+						* 100; // ï¿½ï¿½ï¿½ï¿½ È½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
 				if (list.get(i).in_count > 0)
 					list.get(i).average_in_dur = list.get(i).in_dur
-							/ list.get(i).in_count; // Æò±Õ ¼ö½Å ±æÀÌ
+							/ list.get(i).in_count; // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				else
 					list.get(i).average_in_dur = 0;
 				total_average_in_dur += list.get(i).average_in_dur;
 
 				if (list.get(i).out_count > 0)
 					list.get(i).average_out_dur = list.get(i).out_dur
-							/ list.get(i).out_count; // Æò±Õ ¹ß½Å ±æÀÌ
+							/ list.get(i).out_count; // ï¿½ï¿½ï¿½ ï¿½ß½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				else
 					list.get(i).average_out_dur = 0;
 				total_average_out_dur += list.get(i).average_out_dur;
@@ -358,7 +364,7 @@ public class CallListFragment extends Fragment {
 				list.get(i).average_out_dur_percent = list.get(i).average_out_dur
 						/ total_average_out_dur * 100;
 
-				// ¼ö½Å±æÀÌ¿Í ¹ß½Å±æÀÌÀÇ ÇÕ °è»ê
+				// ï¿½ï¿½ï¿½Å±ï¿½ï¿½Ì¿ï¿½ ï¿½ß½Å±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
 				list.get(i).sum_dur = list.get(i).in_dur + list.get(i).out_dur;
 
 				list.get(i).sum_dur_percent = list.get(i).sum_dur
@@ -367,7 +373,7 @@ public class CallListFragment extends Fragment {
 
 			cursor.close();
 
-			// ½ºÇÇ³Ê
+			// ï¿½ï¿½ï¿½Ç³ï¿½
 			Spinner spin = (Spinner) getView().findViewById(R.id.call_spinner1);
 			spin.setPrompt("Choice Option");
 			adspin = ArrayAdapter.createFromResource(getActivity(),
@@ -376,7 +382,7 @@ public class CallListFragment extends Fragment {
 			spin.setAdapter(adspin);
 			spin.setOnItemSelectedListener(new OnItemSelectedListener() {
 
-				// ½ºÇÇ³Ê ¾ÆÀÌÅÛÀ» ¼±ÅÃÇÑ °Í¿¡ µû¶ó
+				// ï¿½ï¿½ï¿½Ç³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Í¿ï¿½ ï¿½ï¿½ï¿½
 				public void onItemSelected(AdapterView<?> parent, View view,
 						int position, long id) {
 
@@ -390,7 +396,7 @@ public class CallListFragment extends Fragment {
 					TextView sub_value2 = (TextView) getView().findViewById(
 							R.id.sub_call_value2);
 
-					// ¸®½ºÆ®¿¡ ÀÖ´Â ¾ÆÀÌÅÛÀ» ¼±ÅÂÇßÀ» ¶§ ´ëÈ­»óÀÚ°¡ µü ¶ß°Ô ¸¸µå´Â ¼Ò½ºÄÚµå!
+					// ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½È­ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò½ï¿½ï¿½Úµï¿½!
 					OnItemClickListener listener = new OnItemClickListener() {
 
 						@Override
@@ -402,20 +408,20 @@ public class CallListFragment extends Fragment {
 
 						}
 
-					}; // ´ëÈ­»óÀÚ ¼Ò½ºÄÚµå ³¡!
+					}; // ï¿½ï¿½È­ï¿½ï¿½ï¿½ï¿½ ï¿½Ò½ï¿½ï¿½Úµï¿½ ï¿½ï¿½!
 
-					// temp_list »èÁ¦ ±â¹ý
+					// temp_list ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 					for (int i = temp_list.size() - 1; i >= 0; i--) {
 						temp_list.remove(i);
 					}
 
 					switch (position) {
 					case 0:
-						// Á¤·Ä
+						// ï¿½ï¿½ï¿½ï¿½
 						Collections.sort(list, new sumDurCompareDesc());
 
 						/*
-						 * ¼øÀ§ÀúÀå 1ºÎÅÍ Â÷·Ê´ë·Î ³Ö°í, °°Àº °ªÀ» °¡Áö¸é °°Àº µî¼ö°¡ µÇ°Ô ÇÑ´Ù.
+						 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ê´ï¿½ï¿½ ï¿½Ö°ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç°ï¿½ ï¿½Ñ´ï¿½.
 						 */
 						jj = 1;
 						for (int i = 0; i < list.size() - 1; i++) {
@@ -427,7 +433,7 @@ public class CallListFragment extends Fragment {
 							}
 						}
 
-						// // ¸Ç ¸¶Áö¸· µ¥ÀÌÅÍÀÇ ¼øÀ§´Â µû·Î ÄÚµùÇØ¾ß µÈ´Ù.
+						// // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½Ø¾ï¿½ ï¿½È´ï¿½.
 						// if (list.get(list.size() -
 						// 1).in_dur+list.get(list.size() - 1).out_dur !=
 						// list.get(list.size() - 1).in_dur+list.get(list.size()
@@ -438,7 +444,7 @@ public class CallListFragment extends Fragment {
 						// list.get(list.size() - 1).rank = jj;
 						// }
 
-						// 0ÀÌ»ó¸¸ temp_list¿¡ ÀúÀåÇÑ´Ù.
+						// 0ï¿½Ì»ï¿½ temp_listï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 						for (int i = 0; i < list.size(); i++) {
 							if (list.get(i).getSum_dur() > 0) {
 								temp_list.add(list.get(i));
@@ -446,7 +452,9 @@ public class CallListFragment extends Fragment {
 							}
 						}
 
-						// Ä¿½ºÅÒ ºä¸¦ ÀÌ¿ëÇÏ¿© ¸®½ºÆ®ºä¿¡ Ãâ·Â
+
+
+						// Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½ä¸¦ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ä¿¡ ï¿½ï¿½ï¿½
 						TotalDurationListAdapter MyAdapter = new TotalDurationListAdapter(
 								getActivity(), R.layout.incall_view, temp_list);
 						ListView MyList;
@@ -460,11 +468,11 @@ public class CallListFragment extends Fragment {
 						break;
 					case 1:
 
-						sub_text1.setText("ÃÑ ¼ö½Å ±æÀÌ : ");
+						sub_text1.setText("ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : ");
 						sub_value1.setText(String.valueOf((int) total_indur)
 								+ "sec");
-						sub_text2.setText("1ÀÎ´ç Æò±Õ ¼ö½Å ±æÀÌ : ");
-						// ÆÛ¼¾Æ® ¼Ò¼öÁ¡ 2ÀÚ¸®±îÁö Ç¥½ÃÇÏ´Â ¹æ¹ý
+						sub_text2.setText("1ï¿½Î´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : ");
+						// ï¿½Û¼ï¿½Æ® ï¿½Ò¼ï¿½ï¿½ï¿½ 2ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½
 						s_value = String.format("%.2f",
 								total_indur / list.size());
 						sub_value2.setText(s_value + "sec");
@@ -482,7 +490,7 @@ public class CallListFragment extends Fragment {
 							list.set(max, trans);
 						}
 
-						// ¼øÀ§¸¦ ÀúÀåÇÏ´Â ¹Ýº¹¹®
+						// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ýºï¿½ï¿½ï¿½
 						jj = 1;
 						for (int i = 0; i < list.size() - 1; i++) {
 
@@ -492,7 +500,7 @@ public class CallListFragment extends Fragment {
 							}
 						}
 
-						// ¸Ç ¸¶Áö¸· µ¥ÀÌÅÍÀÇ ¼øÀ§´Â µû·Î ÄÚµùÇØ¾ß µÈ´Ù.
+						// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½Ø¾ï¿½ ï¿½È´ï¿½.
 						if (list.get(list.size() - 1).in_dur != list.get(list
 								.size() - 1).in_dur) {
 
@@ -501,7 +509,7 @@ public class CallListFragment extends Fragment {
 							list.get(list.size() - 1).rank = jj;
 						}
 
-						// 0ÀÌ»ó¸¸ temp_list¿¡ ÀúÀåÇÑ´Ù.
+						// 0ï¿½Ì»ï¿½ temp_listï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 						for (int i = 0; i < list.size(); i++) {
 							if (list.get(i).in_dur > 0) {
 								temp_list.add(list.get(i));
@@ -509,7 +517,7 @@ public class CallListFragment extends Fragment {
 							}
 						}
 
-						// Ä¿½ºÅÒ ºä¸¦ ÀÌ¿ëÇÏ¿© ¸®½ºÆ®ºä¿¡ Ãâ·Â
+						// Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½ä¸¦ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ä¿¡ ï¿½ï¿½ï¿½
 						indur_Adapter indurView = new indur_Adapter(
 								getActivity(), R.layout.incall_view, temp_list);
 
@@ -521,20 +529,20 @@ public class CallListFragment extends Fragment {
 
 					case 2:
 
-						sub_text1.setText("ÃÑ Æò±Õ ¼ö½Å ±æÀÌ : ");
+						sub_text1.setText("ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : ");
 						sub_value1.setText(String
-								.valueOf((int) total_average_in_dur) + "ÃÊ");
-						sub_text2.setText("1ÀÎ´ç Æò±Õ ¼ö½Å ±æÀÌ : ");
-						// ÆÛ¼¾Æ® ¼Ò¼öÁ¡ 2ÀÚ¸®±îÁö Ç¥½ÃÇÏ´Â ¹æ¹ý
+								.valueOf((int) total_average_in_dur) + "ï¿½ï¿½");
+						sub_text2.setText("1ï¿½Î´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : ");
+						// ï¿½Û¼ï¿½Æ® ï¿½Ò¼ï¿½ï¿½ï¿½ 2ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½
 						s_value = String.format("%.2f", total_average_in_dur
 								/ list.size());
-						sub_value2.setText(s_value + "ÃÊ");
+						sub_value2.setText(s_value + "ï¿½ï¿½");
 
 						// call_text = (TextView)
 						// getView().findViewById(R.id.call_text);
 						// call_text
-						// .setText("¼øÀ§        ÀÌ¸§                Æò±Õ¼ö½Å±æÀÌ             ºñÀ²");
-						// ¼±ÅÃÁ¤·ÄÀ» ÀÌ¿ëÇÏ¿© ¼ö½Å±æÀÌ¸¦ ³»¸²Â÷¼øÀ¸·Î Á¤·ÄÇÔ(Å«°Ô ¸ÕÀú¿À°Ô)
+						// .setText("ï¿½ï¿½ï¿½ï¿½        ï¿½Ì¸ï¿½                ï¿½ï¿½Õ¼ï¿½ï¿½Å±ï¿½ï¿½ï¿½             ï¿½ï¿½ï¿½ï¿½");
+						// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½Å±ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(Å«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 						for (int i = 0; i < list.size(); i++) {
 							int max = i;
 							for (int j = i + 1; j < list.size(); j++) {
@@ -548,7 +556,7 @@ public class CallListFragment extends Fragment {
 							list.set(max, trans);
 						}
 
-						// ¼øÀ§¸¦ ÀúÀåÇÏ´Â ¹Ýº¹¹®
+						// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ýºï¿½ï¿½ï¿½
 						jj = 1;
 						for (int i = 0; i < list.size() - 1; i++) {
 
@@ -558,7 +566,7 @@ public class CallListFragment extends Fragment {
 							}
 						}
 
-						// ¸Ç ¸¶Áö¸· µ¥ÀÌÅÍÀÇ ¼øÀ§´Â µû·Î ÄÚµùÇØ¾ß µÈ´Ù.
+						// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½Ø¾ï¿½ ï¿½È´ï¿½.
 						if (list.get(list.size() - 1).average_in_dur != list
 								.get(list.size() - 1).average_in_dur) {
 
@@ -567,7 +575,7 @@ public class CallListFragment extends Fragment {
 							list.get(list.size() - 1).rank = jj;
 						}
 
-						// 0ÀÌ»ó¸¸ temp_list¿¡ ÀúÀåÇÑ´Ù.
+						// 0ï¿½Ì»ï¿½ temp_listï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 						for (int i = 0; i < list.size(); i++) {
 							if (list.get(i).average_in_dur > 0) {
 								temp_list.add(list.get(i));
@@ -575,7 +583,7 @@ public class CallListFragment extends Fragment {
 							}
 						}
 
-						// Ä¿½ºÅÒ ºä¸¦ ÀÌ¿ëÇÏ¿© ¸®½ºÆ®ºä¿¡ Ãâ·Â
+						// Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½ä¸¦ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ä¿¡ ï¿½ï¿½ï¿½
 						average_indur_Adapter average_indurView = new average_indur_Adapter(
 								getActivity(), R.layout.incall_view, temp_list);
 
@@ -587,11 +595,11 @@ public class CallListFragment extends Fragment {
 
 					case 3:
 
-						sub_text1.setText("ÃÑ ¹ß½Å È¸¼ö : ");
+						sub_text1.setText("ï¿½ï¿½ ï¿½ß½ï¿½ È¸ï¿½ï¿½ : ");
 						sub_value1.setText(String
 								.valueOf((int) total_outcall_count) + "È¸");
-						sub_text2.setText("1ÀÎ´ç Æò±Õ ¹ß½Å È¸¼ö : ");
-						// ÆÛ¼¾Æ® ¼Ò¼öÁ¡ 2ÀÚ¸®±îÁö Ç¥½ÃÇÏ´Â ¹æ¹ý
+						sub_text2.setText("1ï¿½Î´ï¿½ ï¿½ï¿½ï¿½ ï¿½ß½ï¿½ È¸ï¿½ï¿½ : ");
+						// ï¿½Û¼ï¿½Æ® ï¿½Ò¼ï¿½ï¿½ï¿½ 2ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½
 						s_value = String.format("%.2f", total_outcall_count
 								/ list.size());
 						sub_value2.setText(s_value + "È¸");
@@ -599,8 +607,8 @@ public class CallListFragment extends Fragment {
 						// call_text = (TextView)
 						// getView().findViewById(R.id.call_text);
 						// call_text
-						// .setText("¼øÀ§        ÀÌ¸§                    ¹ß½ÅÈ½¼ö             ºñÀ²");
-						// ¼±ÅÃÁ¤·ÄÀ» ÀÌ¿ëÇÏ¿© ¹ß½ÅÈ½¼ö¸¦ ³»¸²Â÷¼øÀ¸·Î Á¤·ÄÇÔ(Å«°Ô ¸ÕÀú¿À°Ô)
+						// .setText("ï¿½ï¿½ï¿½ï¿½        ï¿½Ì¸ï¿½                    ï¿½ß½ï¿½È½ï¿½ï¿½             ï¿½ï¿½ï¿½ï¿½");
+						// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½ß½ï¿½È½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(Å«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 						for (int i = 0; i < list.size(); i++) {
 							int max = i;
 							for (int j = i + 1; j < list.size(); j++) {
@@ -614,7 +622,7 @@ public class CallListFragment extends Fragment {
 							list.set(max, trans);
 						}
 
-						// ¼øÀ§¸¦ ÀúÀåÇÏ´Â ¹Ýº¹¹®
+						// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ýºï¿½ï¿½ï¿½
 						jj = 1;
 						for (int i = 0; i < list.size() - 1; i++) {
 
@@ -624,7 +632,7 @@ public class CallListFragment extends Fragment {
 							}
 						}
 
-						// ¸Ç ¸¶Áö¸· µ¥ÀÌÅÍÀÇ ¼øÀ§´Â µû·Î ÄÚµùÇØ¾ß µÈ´Ù.
+						// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½Ø¾ï¿½ ï¿½È´ï¿½.
 						if (list.get(list.size() - 1).out_count != list
 								.get(list.size() - 1).out_count) {
 
@@ -633,14 +641,14 @@ public class CallListFragment extends Fragment {
 							list.get(list.size() - 1).rank = jj;
 						}
 
-						// 0ÀÌ»ó¸¸ temp_list¿¡ ÀúÀåÇÑ´Ù.
+						// 0ï¿½Ì»ï¿½ temp_listï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 						for (int i = 0; i < list.size(); i++) {
 							if (list.get(i).out_count > 0) {
 								temp_list.add(list.get(i));
 							}
 						}
 
-						// Ä¿½ºÅÒ ºä¸¦ ÀÌ¿ëÇÏ¿© ¸®½ºÆ®ºä¿¡ Ãâ·Â
+						// Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½ä¸¦ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ä¿¡ ï¿½ï¿½ï¿½
 						outcount_Adapter OutCallAdapter = new outcount_Adapter(
 								getActivity(), R.layout.incall_view, temp_list);
 
@@ -651,20 +659,20 @@ public class CallListFragment extends Fragment {
 						break;
 					case 4:
 
-						sub_text1.setText("ÃÑ ¹ß½Å ±æÀÌ : ");
+						sub_text1.setText("ï¿½ï¿½ ï¿½ß½ï¿½ ï¿½ï¿½ï¿½ï¿½ : ");
 						sub_value1.setText(String.valueOf((int) total_outdur)
-								+ "ÃÊ");
-						sub_text2.setText("1ÀÎ´ç Æò±Õ ¹ß½Å ±æÀÌ : ");
-						// ÆÛ¼¾Æ® ¼Ò¼öÁ¡ 2ÀÚ¸®±îÁö Ç¥½ÃÇÏ´Â ¹æ¹ý
+								+ "ï¿½ï¿½");
+						sub_text2.setText("1ï¿½Î´ï¿½ ï¿½ï¿½ï¿½ ï¿½ß½ï¿½ ï¿½ï¿½ï¿½ï¿½ : ");
+						// ï¿½Û¼ï¿½Æ® ï¿½Ò¼ï¿½ï¿½ï¿½ 2ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½
 						s_value = String.format("%.2f",
 								total_outdur / list.size());
-						sub_value2.setText(s_value + "ÃÊ");
+						sub_value2.setText(s_value + "ï¿½ï¿½");
 
 						// call_text = (TextView)
 						// getView().findViewById(R.id.call_text);
 						// call_text
-						// .setText("¼øÀ§        ÀÌ¸§                    ¹ß½Å±æÀÌ             ºñÀ²");
-						// ¼±ÅÃÁ¤·ÄÀ» ÀÌ¿ëÇÏ¿© ¼ö½ÅÈ½¼ö¸¦ ³»¸²Â÷¼øÀ¸·Î Á¤·ÄÇÔ(Å«°Ô ¸ÕÀú¿À°Ô)
+						// .setText("ï¿½ï¿½ï¿½ï¿½        ï¿½Ì¸ï¿½                    ï¿½ß½Å±ï¿½ï¿½ï¿½             ï¿½ï¿½ï¿½ï¿½");
+						// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½È½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(Å«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 						for (int i = 0; i < list.size(); i++) {
 							int max = i;
 							for (int j = i + 1; j < list.size(); j++) {
@@ -678,7 +686,7 @@ public class CallListFragment extends Fragment {
 							list.set(max, trans);
 						}
 
-						// ¼øÀ§¸¦ ÀúÀåÇÏ´Â ¹Ýº¹¹®
+						// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ýºï¿½ï¿½ï¿½
 						jj = 1;
 						for (int i = 0; i < list.size() - 1; i++) {
 
@@ -688,7 +696,7 @@ public class CallListFragment extends Fragment {
 							}
 						}
 
-						// ¸Ç ¸¶Áö¸· µ¥ÀÌÅÍÀÇ ¼øÀ§´Â µû·Î ÄÚµùÇØ¾ß µÈ´Ù.
+						// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½Ø¾ï¿½ ï¿½È´ï¿½.
 						if (list.get(list.size() - 1).out_dur != list.get(list
 								.size() - 1).out_dur) {
 
@@ -697,14 +705,14 @@ public class CallListFragment extends Fragment {
 							list.get(list.size() - 1).rank = jj;
 						}
 
-						// 0ÀÌ»ó¸¸ temp_list¿¡ ÀúÀåÇÑ´Ù.
+						// 0ï¿½Ì»ï¿½ temp_listï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 						for (int i = 0; i < list.size(); i++) {
 							if (list.get(i).out_dur > 0) {
 								temp_list.add(list.get(i));
 							}
 						}
 
-						// Ä¿½ºÅÒ ºä¸¦ ÀÌ¿ëÇÏ¿© ¸®½ºÆ®ºä¿¡ Ãâ·Â
+						// Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½ä¸¦ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ä¿¡ ï¿½ï¿½ï¿½
 						outdur_Adapter OutDurAdapter = new outdur_Adapter(
 								getActivity(), R.layout.incall_view, temp_list);
 
@@ -716,20 +724,20 @@ public class CallListFragment extends Fragment {
 
 					case 5:
 
-						sub_text1.setText("ÃÑ Æò±Õ ¹ß½Å ±æÀÌ : ");
+						sub_text1.setText("ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ß½ï¿½ ï¿½ï¿½ï¿½ï¿½ : ");
 						sub_value1.setText(String
-								.valueOf((int) total_average_out_dur) + "ÃÊ");
-						sub_text2.setText("1ÀÎ´ç Æò±Õ ¹ß½Å ±æÀÌ : ");
-						// ÆÛ¼¾Æ® ¼Ò¼öÁ¡ 2ÀÚ¸®±îÁö Ç¥½ÃÇÏ´Â ¹æ¹ý
+								.valueOf((int) total_average_out_dur) + "ï¿½ï¿½");
+						sub_text2.setText("1ï¿½Î´ï¿½ ï¿½ï¿½ï¿½ ï¿½ß½ï¿½ ï¿½ï¿½ï¿½ï¿½ : ");
+						// ï¿½Û¼ï¿½Æ® ï¿½Ò¼ï¿½ï¿½ï¿½ 2ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½
 						s_value = String.format("%.2f", total_average_out_dur
 								/ list.size());
-						sub_value2.setText(s_value + "ÃÊ");
+						sub_value2.setText(s_value + "ï¿½ï¿½");
 
 						// call_text = (TextView)
 						// getView().findViewById(R.id.call_text);
 						// call_text
-						// .setText("¼øÀ§        ÀÌ¸§                Æò±Õ¹ß½Å±æÀÌ             ºñÀ²");
-						// ¼±ÅÃÁ¤·ÄÀ» ÀÌ¿ëÇÏ¿© ¼ö½Å±æÀÌ¸¦ ³»¸²Â÷¼øÀ¸·Î Á¤·ÄÇÔ(Å«°Ô ¸ÕÀú¿À°Ô)
+						// .setText("ï¿½ï¿½ï¿½ï¿½        ï¿½Ì¸ï¿½                ï¿½ï¿½Õ¹ß½Å±ï¿½ï¿½ï¿½             ï¿½ï¿½ï¿½ï¿½");
+						// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½Å±ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(Å«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 						for (int i = 0; i < list.size(); i++) {
 							int max = i;
 							for (int j = i + 1; j < list.size(); j++) {
@@ -743,7 +751,7 @@ public class CallListFragment extends Fragment {
 							list.set(max, trans);
 						}
 
-						// ¼øÀ§¸¦ ÀúÀåÇÏ´Â ¹Ýº¹¹®
+						// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ýºï¿½ï¿½ï¿½
 						jj = 1;
 						for (int i = 0; i < list.size() - 1; i++) {
 
@@ -753,7 +761,7 @@ public class CallListFragment extends Fragment {
 							}
 						}
 
-						// ¸Ç ¸¶Áö¸· µ¥ÀÌÅÍÀÇ ¼øÀ§´Â µû·Î ÄÚµùÇØ¾ß µÈ´Ù.
+						// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½Ø¾ï¿½ ï¿½È´ï¿½.
 						if (list.get(list.size() - 1).average_out_dur != list
 								.get(list.size() - 1).average_out_dur) {
 
@@ -762,7 +770,7 @@ public class CallListFragment extends Fragment {
 							list.get(list.size() - 1).rank = jj;
 						}
 
-						// 0ÀÌ»ó¸¸ temp_list¿¡ ÀúÀåÇÑ´Ù.
+						// 0ï¿½Ì»ï¿½ temp_listï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 						for (int i = 0; i < list.size(); i++) {
 							if (list.get(i).average_out_dur > 0) {
 								temp_list.add(list.get(i));
@@ -770,7 +778,7 @@ public class CallListFragment extends Fragment {
 							}
 						}
 
-						// Ä¿½ºÅÒ ºä¸¦ ÀÌ¿ëÇÏ¿© ¸®½ºÆ®ºä¿¡ Ãâ·Â
+						// Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½ä¸¦ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ä¿¡ ï¿½ï¿½ï¿½
 						average_outdur_Adapter average_outdurView = new average_outdur_Adapter(
 								getActivity(), R.layout.incall_view, temp_list);
 
@@ -782,11 +790,11 @@ public class CallListFragment extends Fragment {
 
 					case 6:
 
-						sub_text1.setText("ÃÑ ºÎÀç È¸¼ö : ");
+						sub_text1.setText("ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ : ");
 						sub_value1.setText(String.valueOf((int) total_miss)
 								+ "È¸");
-						sub_text2.setText("1ÀÎ´ç Æò±Õ ºÎÀç È¸¼ö : ");
-						// ÆÛ¼¾Æ® ¼Ò¼öÁ¡ 2ÀÚ¸®±îÁö Ç¥½ÃÇÏ´Â ¹æ¹ý
+						sub_text2.setText("1ï¿½Î´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ : ");
+						// ï¿½Û¼ï¿½Æ® ï¿½Ò¼ï¿½ï¿½ï¿½ 2ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½
 						s_value = String.format("%.2f",
 								total_miss / list.size());
 						sub_value2.setText(s_value + "È¸");
@@ -804,7 +812,7 @@ public class CallListFragment extends Fragment {
 							list.set(max, trans);
 						}
 
-						// ¼øÀ§¸¦ ÀúÀåÇÏ´Â ¹Ýº¹¹®
+						// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ýºï¿½ï¿½ï¿½
 						jj = 1;
 						for (int i = 0; i < list.size() - 1; i++) {
 
@@ -814,7 +822,7 @@ public class CallListFragment extends Fragment {
 							}
 						}
 
-						// ¸Ç ¸¶Áö¸· µ¥ÀÌÅÍÀÇ ¼øÀ§´Â µû·Î ÄÚµùÇØ¾ß µÈ´Ù.
+						// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½Ø¾ï¿½ ï¿½È´ï¿½.
 						if (list.get(list.size() - 1).miss_count != list
 								.get(list.size() - 1).miss_count) {
 
@@ -823,14 +831,14 @@ public class CallListFragment extends Fragment {
 							list.get(list.size() - 1).rank = jj;
 						}
 
-						// 0ÀÌ»ó¸¸ temp_list¿¡ ÀúÀåÇÑ´Ù.
+						// 0ï¿½Ì»ï¿½ temp_listï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 						for (int i = 0; i < list.size(); i++) {
 							if (list.get(i).miss_count > 0) {
 								temp_list.add(list.get(i));
 							}
 						}
 
-						// Ä¿½ºÅÒ ºä¸¦ ÀÌ¿ëÇÏ¿© ¸®½ºÆ®ºä¿¡ Ãâ·Â
+						// Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½ä¸¦ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ä¿¡ ï¿½ï¿½ï¿½
 						misscount_Adapter missCallAdapter = new misscount_Adapter(
 								getActivity(), R.layout.incall_view, temp_list);
 
@@ -850,14 +858,15 @@ public class CallListFragment extends Fragment {
 
 		} else {
 			// TextView tv1 = (TextView) getView().findViewById(R.id.subject1);
-			// tv1.setText("µ¥ÀÌÅÍ ÀÐ±â ½ÇÆÐ");
+			// tv1.setText("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð±ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		}
 
 	}
 
-	// protected Dialog onCreateDialog(int id) {
+
+    // protected Dialog onCreateDialog(int id) {
 	//
-	// //¸®¼Ò½º¿Í ¿¬°á
+	// //ï¿½ï¿½ï¿½Ò½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	// TextView listName
 	// =(TextView)linear.getView().findViewById(R.id.dialogName);
 	// TextView dialogText
@@ -879,21 +888,21 @@ public class CallListFragment extends Fragment {
 	// double test = list.get(itemPosition).sum_dur * 100 / total_dur;
 	// dialogText.setText(R.string.totalTime + list.get(itemPosition).sum_dur +
 	// R.string.sec + "\n"
-	// +"¼ö½ÅÈ½¼ö : " + list.get(itemPosition).in_count + "È¸\n"
-	// + "¼ö½Å±æÀÌ : " + list.get(itemPosition).in_dur + "ÃÊ\n"
-	// + "¹ß½ÅÈ½¼ö : " + list.get(itemPosition).out_count + "È¸\n"
-	// + "¹ß½Å±æÀÌ : " + list.get(itemPosition).out_dur + "ÃÊ\n"
+	// +"ï¿½ï¿½ï¿½ï¿½È½ï¿½ï¿½ : " + list.get(itemPosition).in_count + "È¸\n"
+	// + "ï¿½ï¿½ï¿½Å±ï¿½ï¿½ï¿½ : " + list.get(itemPosition).in_dur + "ï¿½ï¿½\n"
+	// + "ï¿½ß½ï¿½È½ï¿½ï¿½ : " + list.get(itemPosition).out_count + "È¸\n"
+	// + "ï¿½ß½Å±ï¿½ï¿½ï¿½ : " + list.get(itemPosition).out_dur + "ï¿½ï¿½\n"
 	// // + test
 	// );
 	//
 	// if( (list.get(itemPosition).sum_dur * 100 / total_dur) > 5)
-	// critic.setText("Ä£ÇÑ Ä£±¸");
+	// critic.setText("Ä£ï¿½ï¿½ Ä£ï¿½ï¿½");
 	// else if( (list.get(itemPosition).sum_dur * 100 / total_dur) > 3)
-	// critic.setText("±×³É Ä£±¸");
+	// critic.setText("ï¿½×³ï¿½ Ä£ï¿½ï¿½");
 	// else if( (list.get(itemPosition).sum_dur * 100 / total_dur) > 1)
-	// critic.setText("ÁöÀÎ");
+	// critic.setText("ï¿½ï¿½ï¿½ï¿½");
 	// else
-	// critic.setText("´©±¸?");
+	// critic.setText("ï¿½ï¿½ï¿½ï¿½?");
 	//
 	//
 	// if(( list.get(itemPosition).sum_dur * 100 / total_dur) > 30) {

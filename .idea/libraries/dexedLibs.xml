@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="dexedLibs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/bin/dexedLibs/achartengine-0.7.0-e8269db42baf348f1294d5527e3cc1f7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bin/dexedLibs/android-support-v13-dd013cc827e8624beda6b618abb2aa8e.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bin/dexedLibs/achartengine-0.7.0-ede6d81f1d75252c7394fe743f42e50c.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bin/dexedLibs/achartengine-0.7.0-e6c3001a955fdcb13f171bda89cf5489.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bin/dexedLibs/achartengine-0.7.0-ba16fc2d18a3fc88db735a4ad5f216be.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bin/dexedLibs/achartengine-0.7.0-f9f1d767b96bf13dbbe7366402e0417b.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
