@@ -418,7 +418,7 @@ public class CallListFragment extends Fragment  {
 					switch (position) {
 					case 0:
 						// ����
-						Collections.sort(list, new sumDurCompareDesc());
+//						Collections.sort(list, new sumDurCompareDesc());
 
 						/*
 						 * �������� 1���� ���ʴ�� �ְ�, ���� ���� ������ ���� ����� �ǰ� �Ѵ�.
@@ -433,16 +433,15 @@ public class CallListFragment extends Fragment  {
 							}
 						}
 
+
 						// // �� ������ �������� ������ ��� �ڵ��ؾ� �ȴ�.
-						// if (list.get(list.size() -
-						// 1).in_dur+list.get(list.size() - 1).out_dur !=
-						// list.get(list.size() - 1).in_dur+list.get(list.size()
-						// - 1).out_dur) {
-						//
-						// list.get(list.size() - 1).rank = jj + 1;
-						// } else {
-						// list.get(list.size() - 1).rank = jj;
-						// }
+//						if (list.get(list.size() - 1).in_dur+list.get(list.size() - 1).out_dur !=
+//						list.get(list.size() - 1).in_dur+list.get(list.size()- 1).out_dur) {
+//
+//						list.get(list.size() - 1).rank = jj + 1;
+//						} else {
+//						list.get(list.size() - 1).rank = jj;
+//						}
 
 						// 0�̻� temp_list�� �����Ѵ�.
 						for (int i = 0; i < list.size(); i++) {

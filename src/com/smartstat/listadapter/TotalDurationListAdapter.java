@@ -78,45 +78,11 @@ public class TotalDurationListAdapter extends BaseAdapter implements
 		return position;
 	}
 
-	// °¢ Ç×¸ñÀÇ ºä »ý¼º
+	// ï¿½ï¿½ ï¿½×¸ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½
 	public View getView(int position, View convertView, ViewGroup parent) {
 
 		if (convertView == null) {
 			convertView = Inflater.inflate(layout, parent, false);
-		}
-
-		// 1,2,3µîÀº ÀÌ¹ÌÁö·Î ·©Å©¸¦ º¸¿©ÁÖµµ·Ï ÇÑ´Ù.
-		if (arSrc.get(position).rank == 1) {
-			// 1µîÀº ±Ý¸Þ´Þ!
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(R.drawable.first);
-
-			// ¾Æ·¡ÀÇ 2¹®ÀåÀ» ¾²Áö ¾ÊÀ¸¸é textView¿¡ °ªÀÌ ³ª¿Í¼­ ¾ÈµÇ...¿Ö ÀÌ·¸°Ô ÇØ¾ß µÇ´ÂÁö ÀÌÇØ°¡ ¾È°¡..
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			rank.setText("");
-		} else if (arSrc.get(position).rank == 2) {
-			// 2µîÀº Àº¸Þ´Þ!
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(R.drawable.second);
-			// ¾Æ·¡ÀÇ 2¹®ÀåÀ» ¾²Áö ¾ÊÀ¸¸é textView¿¡ °ªÀÌ ³ª¿Í¼­ ¾ÈµÇ...¿Ö ÀÌ·¸°Ô ÇØ¾ß µÇ´ÂÁö ÀÌÇØ°¡ ¾È°¡..
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			rank.setText("");
-		} else if (arSrc.get(position).rank == 3) {
-			// 3µîÀº µ¿¸Å´Þ!
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(R.drawable.third);
-			// ¾Æ·¡ÀÇ 2¹®ÀåÀ» ¾²Áö ¾ÊÀ¸¸é textView¿¡ °ªÀÌ ³ª¿Í¼­ ¾ÈµÇ...¿Ö ÀÌ·¸°Ô ÇØ¾ß µÇ´ÂÁö ÀÌÇØ°¡ ¾È°¡..
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			rank.setText("");
-
-		} else {
-			// 4µîºÎÅÍ´Â ±×³É ÅØ½ºÆ®·Î Ãâ·Â! ¤»¤»¤»
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			// image.setVisibility(View.INVISIBLE);
-			image.setImageResource(Color.parseColor("#f6f7ef"));
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			// debug = String.valueOf(arSrc.get(position).rank);
-			rank.setText("[" + arSrc.get(position).rank + "]");
 		}
 
 		TextView name = (TextView) convertView.findViewById(R.id.call_name);
@@ -126,16 +92,29 @@ public class TotalDurationListAdapter extends BaseAdapter implements
 
 		int sum_dur = arSrc.get(position).getSum_dur();
 
+
 		int hour = sum_dur / 3600;
 		int minute = (sum_dur - hour * 3600) / 60;
 		int second = ((sum_dur - hour * 3600) - minute * 60);
-		debug = String.valueOf(hour + ":" + minute + ":" + second);
 
+        String hourText = "", minuteText = "", secondText = "";
+        if(hour > 0)     {
+            hourText = hour + "ì‹œê°„ ";
+        }
+        if(minute > 0)  {
+            minuteText = minute + "ë¶„ ";
+        }
+        if(second > 0)  {
+            secondText = second + "ì´ˆ";
+        }
+
+//		debug = String.valueOf(hour + ":" + minute + ":" + second);
+        debug = hourText + minuteText + secondText;
 		count.setText(debug);
 
 		TextView dur = (TextView) convertView.findViewById(R.id.call_percent);
 
-		// ÆÛ¼¾Æ® ¼Ò¼öÁ¡ 2ÀÚ¸®±îÁö Ç¥½ÃÇÏ´Â ¹æ¹ý
+		// ï¿½Û¼ï¿½Æ® ï¿½Ò¼ï¿½ï¿½ï¿½ 2ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½
 		s_value = String
 				.format("%.2f", (arSrc.get(position).indur_percent + arSrc
 						.get(position).outdur_percent) / 2);
