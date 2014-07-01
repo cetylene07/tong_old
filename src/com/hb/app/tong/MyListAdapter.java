@@ -1,3 +1,8 @@
+/*
+* MyListAdapter is CustomListAdapter
+* */
+
+
 package com.hb.app.tong;
 
 import java.util.ArrayList;
@@ -16,7 +21,7 @@ import android.widget.TextView;
 
 import com.smartstat.info.Info;
 
-// ¼ö½ÅÀüÈ­ È½¼ö ¾î´ðÅÍ Å¬·¡½º
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È­ È½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
 public class MyListAdapter extends BaseAdapter implements OnItemClickListener {
 	/**
 	 * @uml.property  name="maincon"
@@ -56,12 +61,15 @@ public class MyListAdapter extends BaseAdapter implements OnItemClickListener {
 	 */
 	ImageView image;
 
-	public MyListAdapter(Context context, int alayout, ArrayList<Info> alist) {
+    String attribute;
+
+	public MyListAdapter(Context context, int alayout, ArrayList<Info> alist, String _attribute) {
 		maincon = context;
 		Inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		arSrc = alist;
 		layout = alayout;
+        attribute = _attribute;
 	}
 
 	public int getCount() {
@@ -76,70 +84,71 @@ public class MyListAdapter extends BaseAdapter implements OnItemClickListener {
 		return position;
 	}
 
-	// °¢ Ç×¸ñÀÇ ºä »ý¼º
+    public String secToHourMinuteSecond(int time)   {
+        
+        int hour = time / 3600;
+        int minute = (time - hour * 3600) / 60;
+        int second = ((time - hour * 3600) - minute * 60);
+
+        String hourText = "", minuteText = "", secondText = "";
+        if(hour > 0)     {
+            hourText = hour + "ì‹œê°„ ";
+        }
+        if(minute > 0)  {
+            minuteText = minute + "ë¶„ ";
+        }
+        if(second > 0)  {
+            secondText = second + "ì´ˆ";
+        }
+        return hourText + minuteText + secondText;
+    }
+    public String secToHourMinuteSecond(double doubleTime)   {
+        int time = (int)doubleTime;
+        return secToHourMinuteSecond(time);
+    }
+
+	// ï¿½ï¿½ ï¿½×¸ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½
 	public View getView(int position, View convertView, ViewGroup parent) {
 
-		if (convertView == null) {
-			convertView = Inflater.inflate(layout, parent, false);
-		}
-
-		// 1,2,3µîÀº ÀÌ¹ÌÁö·Î ·©Å©¸¦ º¸¿©ÁÖµµ·Ï ÇÑ´Ù.
-		if (arSrc.get(position).rank == 1) {
-			// 1µîÀº ±Ý¸Þ´Þ!
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(R.drawable.first);
-
-			// ¾Æ·¡ÀÇ 2¹®ÀåÀ» ¾²Áö ¾ÊÀ¸¸é textView¿¡ °ªÀÌ ³ª¿Í¼­ ¾ÈµÇ...¿Ö ÀÌ·¸°Ô ÇØ¾ß µÇ´ÂÁö ÀÌÇØ°¡ ¾È°¡..
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			rank.setText("");
-		} else if (arSrc.get(position).rank == 2) {
-			// 2µîÀº Àº¸Þ´Þ!
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(R.drawable.second);
-			// ¾Æ·¡ÀÇ 2¹®ÀåÀ» ¾²Áö ¾ÊÀ¸¸é textView¿¡ °ªÀÌ ³ª¿Í¼­ ¾ÈµÇ...¿Ö ÀÌ·¸°Ô ÇØ¾ß µÇ´ÂÁö ÀÌÇØ°¡ ¾È°¡..
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			rank.setText("");
-		} else if (arSrc.get(position).rank == 3) {
-			// 3µîÀº µ¿¸Å´Þ!
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(R.drawable.third);
-			// ¾Æ·¡ÀÇ 2¹®ÀåÀ» ¾²Áö ¾ÊÀ¸¸é textView¿¡ °ªÀÌ ³ª¿Í¼­ ¾ÈµÇ...¿Ö ÀÌ·¸°Ô ÇØ¾ß µÇ´ÂÁö ÀÌÇØ°¡ ¾È°¡..
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			rank.setText("");
-
-		} else {
-			// 4µîºÎÅÍ´Â ±×³É ÅØ½ºÆ®·Î Ãâ·Â! ¤»¤»¤»
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-//			image.setVisibility(View.INVISIBLE);
-			image.setImageResource(Color.parseColor("#f6f7ef"));
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-//			debug = String.valueOf(arSrc.get(position).rank);
-			rank.setText("[" + arSrc.get(position).rank + "]");
-		}
-
-		TextView name = (TextView) convertView.findViewById(R.id.call_name);
-		name.setText(arSrc.get(position).name);
-
-		
+        if (convertView == null) {
+            convertView = Inflater.inflate(layout, parent, false);
+        }
+        TextView name = (TextView) convertView.findViewById(R.id.call_name);
+        name.setText(arSrc.get(position).name);
 		TextView count = (TextView) convertView.findViewById(R.id.call_value);
-		debug = String.valueOf(arSrc.get(position).in_count + " times");
+        debug = "";
+
+        if(attribute == "sumdur")    {
+            debug = secToHourMinuteSecond(arSrc.get(position).sum_dur);
+        }
+        else if(attribute == "incount")    {
+            debug = String.valueOf(arSrc.get(position).in_count + " sec");
+        }
+        else if(attribute == "indur")    {
+            debug = secToHourMinuteSecond(arSrc.get(position).in_dur);
+        }
+        else if(attribute == "average_indur")   {
+            debug = secToHourMinuteSecond(arSrc.get(position).average_in_dur);
+        }
+        else if(attribute == "outdur")  {
+            debug = secToHourMinuteSecond(arSrc.get(position).out_dur);
+        }
+        else if(attribute == "average_outdur")  {
+            debug = secToHourMinuteSecond(arSrc.get(position).average_out_dur);
+        }
+        else if(attribute == "misscount")  {
+            debug = String.valueOf((int) arSrc.get(position).miss_count + " sec");
+        }
+        else if(attribute == "outcount")  {
+            debug = String.valueOf((int) arSrc.get(position).out_count + " sec");
+        }
 		count.setText(debug);
-
-		TextView dur = (TextView) convertView.findViewById(R.id.call_percent);
-
-		// ÆÛ¼¾Æ® ¼Ò¼öÁ¡ 2ÀÚ¸®±îÁö Ç¥½ÃÇÏ´Â ¹æ¹ý
-		s_value = String.format("%.2f", arSrc.get(position).incount_percent);
-		debug = String.valueOf(s_value + "%");
-		dur.setText(debug);
-
 		return convertView;
-
 	}
-
+    
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		// TODO Auto-generated method stub
-
 	}
 
 	public void toggle(int position) {
@@ -147,387 +156,4 @@ public class MyListAdapter extends BaseAdapter implements OnItemClickListener {
 		notifyDataSetChanged();
 	}
 
-}
-
-// ¼ö½ÅÀüÈ­±æÀÌ ¾î´ðÅÍ Å¬·¡½º
-class indur_Adapter extends MyListAdapter {
-
-	public indur_Adapter(Context context, int alayout, ArrayList<Info> alist) {
-		super(context, alayout, alist);
-	}
-
-	// °¢ Ç×¸ñÀÇ ºä »ý¼º
-	public View getView(int position, View convertView, ViewGroup parent) {
-
-		if (convertView == null) {
-			convertView = Inflater.inflate(layout, parent, false);
-		}
-
-		// 1,2,3µîÀº ÀÌ¹ÌÁö·Î ·©Å©¸¦ º¸¿©ÁÖµµ·Ï ÇÑ´Ù.
-		if (arSrc.get(position).rank == 1) {
-			// 1µîÀº ±Ý¸Þ´Þ!
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(R.drawable.first);
-
-			// ¾Æ·¡ÀÇ 2¹®ÀåÀ» ¾²Áö ¾ÊÀ¸¸é textView¿¡ °ªÀÌ ³ª¿Í¼­ ¾ÈµÇ...¿Ö ÀÌ·¸°Ô ÇØ¾ß µÇ´ÂÁö ÀÌÇØ°¡ ¾È°¡..
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			rank.setText("");
-		} else if (arSrc.get(position).rank == 2) {
-			// 2µîÀº Àº¸Þ´Þ!
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(R.drawable.second);
-			// ¾Æ·¡ÀÇ 2¹®ÀåÀ» ¾²Áö ¾ÊÀ¸¸é textView¿¡ °ªÀÌ ³ª¿Í¼­ ¾ÈµÇ...¿Ö ÀÌ·¸°Ô ÇØ¾ß µÇ´ÂÁö ÀÌÇØ°¡ ¾È°¡..
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			rank.setText("");
-		} else if (arSrc.get(position).rank == 3) {
-			// 3µîÀº µ¿¸Å´Þ!
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(R.drawable.third);
-			// ¾Æ·¡ÀÇ 2¹®ÀåÀ» ¾²Áö ¾ÊÀ¸¸é textView¿¡ °ªÀÌ ³ª¿Í¼­ ¾ÈµÇ...¿Ö ÀÌ·¸°Ô ÇØ¾ß µÇ´ÂÁö ÀÌÇØ°¡ ¾È°¡..
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			rank.setText("");
-
-		} else {
-			// 4µîºÎÅÍ´Â ±×³É ÅØ½ºÆ®·Î Ãâ·Â! ¤»¤»¤»
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(Color.parseColor("#f6f7ef"));
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			debug = String.valueOf(arSrc.get(position).rank);
-			rank.setText("[" + debug + "]");
-		}
-
-		TextView name = (TextView) convertView.findViewById(R.id.call_name);
-		name.setText(arSrc.get(position).name);
-
-		TextView count = (TextView) convertView.findViewById(R.id.call_value);
-		debug = String.valueOf(arSrc.get(position).in_dur + " sec");
-		count.setText(debug);
-
-		TextView dur = (TextView) convertView.findViewById(R.id.call_percent);
-		// ÆÛ¼¾Æ® ¼Ò¼öÁ¡ 2ÀÚ¸®±îÁö Ç¥½ÃÇÏ´Â ¹æ¹ý
-		s_value = String.format("%.2f", arSrc.get(position).indur_percent);
-		debug = String.valueOf(s_value + "%");
-		dur.setText(debug);
-		return convertView;
-	}
-}
-
-// Æò±Õ ¼ö½ÅÀüÈ­±æÀÌ ¾î´ðÅÍ Å¬·¡½º
-class average_indur_Adapter extends MyListAdapter {
-
-	public average_indur_Adapter(Context context, int alayout,
-			ArrayList<Info> alist) {
-		super(context, alayout, alist);
-	}
-
-	// °¢ Ç×¸ñÀÇ ºä »ý¼º
-	public View getView(int position, View convertView, ViewGroup parent) {
-
-		if (convertView == null) {
-			convertView = Inflater.inflate(layout, parent, false);
-		}
-
-		// 1,2,3µîÀº ÀÌ¹ÌÁö·Î ·©Å©¸¦ º¸¿©ÁÖµµ·Ï ÇÑ´Ù.
-		if (arSrc.get(position).rank == 1) {
-			// 1µîÀº ±Ý¸Þ´Þ!
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(R.drawable.first);
-
-			// ¾Æ·¡ÀÇ 2¹®ÀåÀ» ¾²Áö ¾ÊÀ¸¸é textView¿¡ °ªÀÌ ³ª¿Í¼­ ¾ÈµÇ...¿Ö ÀÌ·¸°Ô ÇØ¾ß µÇ´ÂÁö ÀÌÇØ°¡ ¾È°¡..
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			rank.setText("");
-		} else if (arSrc.get(position).rank == 2) {
-			// 2µîÀº Àº¸Þ´Þ!
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(R.drawable.second);
-			// ¾Æ·¡ÀÇ 2¹®ÀåÀ» ¾²Áö ¾ÊÀ¸¸é textView¿¡ °ªÀÌ ³ª¿Í¼­ ¾ÈµÇ...¿Ö ÀÌ·¸°Ô ÇØ¾ß µÇ´ÂÁö ÀÌÇØ°¡ ¾È°¡..
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			rank.setText("");
-		} else if (arSrc.get(position).rank == 3) {
-			// 3µîÀº µ¿¸Å´Þ!
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(R.drawable.third);
-			// ¾Æ·¡ÀÇ 2¹®ÀåÀ» ¾²Áö ¾ÊÀ¸¸é textView¿¡ °ªÀÌ ³ª¿Í¼­ ¾ÈµÇ...¿Ö ÀÌ·¸°Ô ÇØ¾ß µÇ´ÂÁö ÀÌÇØ°¡ ¾È°¡..
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			rank.setText("");
-
-		} else {
-			// 4µîºÎÅÍ´Â ±×³É ÅØ½ºÆ®·Î Ãâ·Â! ¤»¤»¤»
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(Color.parseColor("#f6f7ef"));
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			debug = String.valueOf(arSrc.get(position).rank);
-			rank.setText("[" + debug + "]");
-		}
-
-		TextView name = (TextView) convertView.findViewById(R.id.call_name);
-		name.setText(arSrc.get(position).name);
-
-		TextView count = (TextView) convertView.findViewById(R.id.call_value);
-		debug = String.valueOf((int) arSrc.get(position).average_in_dur + " sec");
-		count.setText(debug);
-
-		TextView dur = (TextView) convertView.findViewById(R.id.call_percent);
-		// ÆÛ¼¾Æ® ¼Ò¼öÁ¡ 2ÀÚ¸®±îÁö Ç¥½ÃÇÏ´Â ¹æ¹ý
-		s_value = String.format("%.2f",
-				arSrc.get(position).average_in_dur_percent);
-		debug = String.valueOf(s_value + "%");
-		dur.setText(debug);
-		return convertView;
-	}
-}
-
-// ¹ß½ÅÀüÈ­È½¼ö ¾î´ðÅÍ Å¬·¡½º
-class outcount_Adapter extends MyListAdapter {
-
-	public outcount_Adapter(Context context, int alayout, ArrayList<Info> alist) {
-		super(context, alayout, alist);
-	}
-
-	// °¢ Ç×¸ñÀÇ ºä »ý¼º
-	public View getView(int position, View convertView, ViewGroup parent) {
-
-		if (convertView == null) {
-			convertView = Inflater.inflate(layout, parent, false);
-		}
-
-		// 1,2,3µîÀº ÀÌ¹ÌÁö·Î ·©Å©¸¦ º¸¿©ÁÖµµ·Ï ÇÑ´Ù.
-		if (arSrc.get(position).rank == 1) {
-			// 1µîÀº ±Ý¸Þ´Þ!
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(R.drawable.first);
-
-			// ¾Æ·¡ÀÇ 2¹®ÀåÀ» ¾²Áö ¾ÊÀ¸¸é textView¿¡ °ªÀÌ ³ª¿Í¼­ ¾ÈµÇ...¿Ö ÀÌ·¸°Ô ÇØ¾ß µÇ´ÂÁö ÀÌÇØ°¡ ¾È°¡..
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			rank.setText("");
-		} else if (arSrc.get(position).rank == 2) {
-			// 2µîÀº Àº¸Þ´Þ!
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(R.drawable.second);
-			// ¾Æ·¡ÀÇ 2¹®ÀåÀ» ¾²Áö ¾ÊÀ¸¸é textView¿¡ °ªÀÌ ³ª¿Í¼­ ¾ÈµÇ...¿Ö ÀÌ·¸°Ô ÇØ¾ß µÇ´ÂÁö ÀÌÇØ°¡ ¾È°¡..
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			rank.setText("");
-		} else if (arSrc.get(position).rank == 3) {
-			// 3µîÀº µ¿¸Å´Þ!
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(R.drawable.third);
-			// ¾Æ·¡ÀÇ 2¹®ÀåÀ» ¾²Áö ¾ÊÀ¸¸é textView¿¡ °ªÀÌ ³ª¿Í¼­ ¾ÈµÇ...¿Ö ÀÌ·¸°Ô ÇØ¾ß µÇ´ÂÁö ÀÌÇØ°¡ ¾È°¡..
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			rank.setText("");
-
-		} else {
-			// 4µîºÎÅÍ´Â ±×³É ÅØ½ºÆ®·Î Ãâ·Â! ¤»¤»¤»
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(Color.parseColor("#f6f7ef"));
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			debug = String.valueOf(arSrc.get(position).rank);
-			rank.setText("[" + debug + "]");
-		}
-		TextView name = (TextView) convertView.findViewById(R.id.call_name);
-		name.setText(arSrc.get(position).name);
-
-		TextView count = (TextView) convertView.findViewById(R.id.call_value);
-		debug = String.valueOf(arSrc.get(position).out_count + " times");
-		count.setText(debug);
-
-		TextView dur = (TextView) convertView.findViewById(R.id.call_percent);
-		// ÆÛ¼¾Æ® ¼Ò¼öÁ¡ 2ÀÚ¸®±îÁö Ç¥½ÃÇÏ´Â ¹æ¹ý
-		s_value = String.format("%.2f", arSrc.get(position).outcount_percent);
-		debug = String.valueOf(s_value + "%");
-		dur.setText(debug);
-
-		return convertView;
-
-	}
-}
-
-// ¹ß½ÅÀüÈ­±æÀÌ ¾î´ðÅÍ Å¬·¡½º
-class outdur_Adapter extends MyListAdapter {
-
-	public outdur_Adapter(Context context, int alayout, ArrayList<Info> alist) {
-		super(context, alayout, alist);
-	}
-
-	// °¢ Ç×¸ñÀÇ ºä »ý¼º
-	public View getView(int position, View convertView, ViewGroup parent) {
-
-		if (convertView == null) {
-			convertView = Inflater.inflate(layout, parent, false);
-		}
-
-		// 1,2,3µîÀº ÀÌ¹ÌÁö·Î ·©Å©¸¦ º¸¿©ÁÖµµ·Ï ÇÑ´Ù.
-		if (arSrc.get(position).rank == 1) {
-			// 1µîÀº ±Ý¸Þ´Þ!
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(R.drawable.first);
-
-			// ¾Æ·¡ÀÇ 2¹®ÀåÀ» ¾²Áö ¾ÊÀ¸¸é textView¿¡ °ªÀÌ ³ª¿Í¼­ ¾ÈµÇ...¿Ö ÀÌ·¸°Ô ÇØ¾ß µÇ´ÂÁö ÀÌÇØ°¡ ¾È°¡..
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			rank.setText("");
-		} else if (arSrc.get(position).rank == 2) {
-			// 2µîÀº Àº¸Þ´Þ!
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(R.drawable.second);
-			// ¾Æ·¡ÀÇ 2¹®ÀåÀ» ¾²Áö ¾ÊÀ¸¸é textView¿¡ °ªÀÌ ³ª¿Í¼­ ¾ÈµÇ...¿Ö ÀÌ·¸°Ô ÇØ¾ß µÇ´ÂÁö ÀÌÇØ°¡ ¾È°¡..
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			rank.setText("");
-		} else if (arSrc.get(position).rank == 3) {
-			// 3µîÀº µ¿¸Å´Þ!
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(R.drawable.third);
-			// ¾Æ·¡ÀÇ 2¹®ÀåÀ» ¾²Áö ¾ÊÀ¸¸é textView¿¡ °ªÀÌ ³ª¿Í¼­ ¾ÈµÇ...¿Ö ÀÌ·¸°Ô ÇØ¾ß µÇ´ÂÁö ÀÌÇØ°¡ ¾È°¡..
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			rank.setText("");
-
-		} else {
-			// 4µîºÎÅÍ´Â ±×³É ÅØ½ºÆ®·Î Ãâ·Â! ¤»¤»¤»
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(Color.parseColor("#f6f7ef"));
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			debug = String.valueOf(arSrc.get(position).rank);
-			rank.setText("[" + debug + "]");
-		}
-		TextView name = (TextView) convertView.findViewById(R.id.call_name);
-		name.setText(arSrc.get(position).name);
-
-		TextView count = (TextView) convertView.findViewById(R.id.call_value);
-		debug = String.valueOf(arSrc.get(position).out_dur + " sec");
-		count.setText(debug);
-
-		TextView dur = (TextView) convertView.findViewById(R.id.call_percent);
-		// ÆÛ¼¾Æ® ¼Ò¼öÁ¡ 2ÀÚ¸®±îÁö Ç¥½ÃÇÏ´Â ¹æ¹ý
-		s_value = String.format("%.2f", arSrc.get(position).outdur_percent);
-		debug = String.valueOf(s_value + "%");
-		dur.setText(debug);
-
-		return convertView;
-
-	}
-}
-
-// Æò±Õ ¹ß½ÅÀüÈ­±æÀÌ ¾î´ðÅÍ Å¬·¡½º
-class average_outdur_Adapter extends MyListAdapter {
-
-	public average_outdur_Adapter(Context context, int alayout,
-			ArrayList<Info> alist) {
-		super(context, alayout, alist);
-	}
-
-	// °¢ Ç×¸ñÀÇ ºä »ý¼º
-	public View getView(int position, View convertView, ViewGroup parent) {
-
-		if (convertView == null) {
-			convertView = Inflater.inflate(layout, parent, false);
-		}
-
-		// 1,2,3µîÀº ÀÌ¹ÌÁö·Î ·©Å©¸¦ º¸¿©ÁÖµµ·Ï ÇÑ´Ù.
-		if (arSrc.get(position).rank == 1) {
-			// 1µîÀº ±Ý¸Þ´Þ!
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(R.drawable.first);
-
-			// ¾Æ·¡ÀÇ 2¹®ÀåÀ» ¾²Áö ¾ÊÀ¸¸é textView¿¡ °ªÀÌ ³ª¿Í¼­ ¾ÈµÇ...¿Ö ÀÌ·¸°Ô ÇØ¾ß µÇ´ÂÁö ÀÌÇØ°¡ ¾È°¡..
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			rank.setText("");
-		} else if (arSrc.get(position).rank == 2) {
-			// 2µîÀº Àº¸Þ´Þ!
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(R.drawable.second);
-			// ¾Æ·¡ÀÇ 2¹®ÀåÀ» ¾²Áö ¾ÊÀ¸¸é textView¿¡ °ªÀÌ ³ª¿Í¼­ ¾ÈµÇ...¿Ö ÀÌ·¸°Ô ÇØ¾ß µÇ´ÂÁö ÀÌÇØ°¡ ¾È°¡..
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			rank.setText("");
-		} else if (arSrc.get(position).rank == 3) {
-			// 3µîÀº µ¿¸Å´Þ!
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(R.drawable.third);
-			// ¾Æ·¡ÀÇ 2¹®ÀåÀ» ¾²Áö ¾ÊÀ¸¸é textView¿¡ °ªÀÌ ³ª¿Í¼­ ¾ÈµÇ...¿Ö ÀÌ·¸°Ô ÇØ¾ß µÇ´ÂÁö ÀÌÇØ°¡ ¾È°¡..
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			rank.setText("");
-
-		} else {
-			// 4µîºÎÅÍ´Â ±×³É ÅØ½ºÆ®·Î Ãâ·Â! ¤»¤»¤»
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(Color.parseColor("#f6f7ef"));
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			debug = String.valueOf(arSrc.get(position).rank);
-			rank.setText("[" + debug + "]");
-		}
-		TextView name = (TextView) convertView.findViewById(R.id.call_name);
-		name.setText(arSrc.get(position).name);
-		TextView count = (TextView) convertView.findViewById(R.id.call_value);
-		debug = String.valueOf((int) arSrc.get(position).average_out_dur + " sec");
-		count.setText(debug);
-
-		TextView dur = (TextView) convertView.findViewById(R.id.call_percent);
-		// ÆÛ¼¾Æ® ¼Ò¼öÁ¡ 2ÀÚ¸®±îÁö Ç¥½ÃÇÏ´Â ¹æ¹ý
-		s_value = String.format("%.2f",
-				arSrc.get(position).average_out_dur_percent);
-		debug = String.valueOf(s_value + "%");
-		dur.setText(debug);
-		return convertView;
-	}
-}
-
-// ºÎÀçÀüÈ­È½¼ö ¾î´ðÅÍ Å¬·¡½º
-class misscount_Adapter extends MyListAdapter {
-
-	public misscount_Adapter(Context context, int alayout, ArrayList<Info> alist) {
-		super(context, alayout, alist);
-	}
-
-	// °¢ Ç×¸ñÀÇ ºä »ý¼º
-	public View getView(int position, View convertView, ViewGroup parent) {
-
-		if (convertView == null) {
-			convertView = Inflater.inflate(layout, parent, false);
-		}
-
-		// 1,2,3µîÀº ÀÌ¹ÌÁö·Î ·©Å©¸¦ º¸¿©ÁÖµµ·Ï ÇÑ´Ù.
-		if (arSrc.get(position).rank == 1) {
-			// 1µîÀº ±Ý¸Þ´Þ!
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(R.drawable.first);
-
-			// ¾Æ·¡ÀÇ 2¹®ÀåÀ» ¾²Áö ¾ÊÀ¸¸é textView¿¡ °ªÀÌ ³ª¿Í¼­ ¾ÈµÇ...¿Ö ÀÌ·¸°Ô ÇØ¾ß µÇ´ÂÁö ÀÌÇØ°¡ ¾È°¡..
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			rank.setText("");
-		} else if (arSrc.get(position).rank == 2) {
-			// 2µîÀº Àº¸Þ´Þ!
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(R.drawable.second);
-			// ¾Æ·¡ÀÇ 2¹®ÀåÀ» ¾²Áö ¾ÊÀ¸¸é textView¿¡ °ªÀÌ ³ª¿Í¼­ ¾ÈµÇ...¿Ö ÀÌ·¸°Ô ÇØ¾ß µÇ´ÂÁö ÀÌÇØ°¡ ¾È°¡..
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			rank.setText("");
-		} else if (arSrc.get(position).rank == 3) {
-			// 3µîÀº µ¿¸Å´Þ!
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(R.drawable.third);
-			// ¾Æ·¡ÀÇ 2¹®ÀåÀ» ¾²Áö ¾ÊÀ¸¸é textView¿¡ °ªÀÌ ³ª¿Í¼­ ¾ÈµÇ...¿Ö ÀÌ·¸°Ô ÇØ¾ß µÇ´ÂÁö ÀÌÇØ°¡ ¾È°¡..
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			rank.setText("");
-
-		} else {
-			// 4µîºÎÅÍ´Â ±×³É ÅØ½ºÆ®·Î Ãâ·Â! ¤»¤»¤»
-			image = (ImageView) convertView.findViewById(R.id.call_image);
-			image.setImageResource(Color.parseColor("#f6f7ef"));
-			rank = (TextView) convertView.findViewById(R.id.call_rank);
-			debug = String.valueOf(arSrc.get(position).rank);
-			rank.setText("[" + debug + "]");
-		}
-
-		TextView name = (TextView) convertView.findViewById(R.id.call_name);
-		name.setText(arSrc.get(position).name);
-		TextView count = (TextView) convertView.findViewById(R.id.call_value);
-		debug = String.valueOf(arSrc.get(position).miss_count + " times");
-		count.setText(debug);
-
-		TextView dur = (TextView) convertView.findViewById(R.id.call_percent);
-		// ÆÛ¼¾Æ® ¼Ò¼öÁ¡ 2ÀÚ¸®±îÁö Ç¥½ÃÇÏ´Â ¹æ¹ý
-		s_value = String.format("%.2f", arSrc.get(position).miss_percent);
-		debug = String.valueOf(s_value + "%");
-		dur.setText(debug);
-
-		return convertView;
-
-	}
 }

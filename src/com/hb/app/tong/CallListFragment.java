@@ -140,6 +140,9 @@ public class CallListFragment extends Fragment  {
 	final static int itemView = 0;
 	static int itemPosition = 0;// ����Ʈ�� ������ �� ��ġ
 
+    //adapterView is a sort of CustomView
+    public MyListAdapter adapterView = null;
+
 	// 5.16
 	// �̹����� �ҷ����� ���ؼ� ����
 	/**
@@ -456,11 +459,16 @@ public class CallListFragment extends Fragment  {
 						// Ŀ���� �並 �̿��Ͽ� ����Ʈ�信 ���
 						TotalDurationListAdapter MyAdapter = new TotalDurationListAdapter(
 								getActivity(), R.layout.incall_view, temp_list);
+
+                        adapterView = new MyListAdapter(getActivity(), R.layout.incall_view, temp_list, "sumdur");
+
+
+
 						ListView MyList;
 
 						MyList = (ListView) getView().findViewById(
 								R.id.call_list);
-						MyList.setAdapter(MyAdapter);
+						MyList.setAdapter(adapterView);
 
 						MyList.setOnItemClickListener(listener);
 
@@ -517,12 +525,13 @@ public class CallListFragment extends Fragment  {
 						}
 
 						// Ŀ���� �並 �̿��Ͽ� ����Ʈ�信 ���
-						indur_Adapter indurView = new indur_Adapter(
-								getActivity(), R.layout.incall_view, temp_list);
+                        adapterView = new MyListAdapter(getActivity(), R.layout.incall_view, temp_list, "indur");
+//						indur_Adapter indurView = new indur_Adapter(
+//								getActivity(), R.layout.incall_view, temp_list);
 
 						MyList = (ListView) getView().findViewById(
 								R.id.call_list);
-						MyList.setAdapter(indurView);
+						MyList.setAdapter(adapterView);
 
 						break;
 
@@ -583,12 +592,11 @@ public class CallListFragment extends Fragment  {
 						}
 
 						// Ŀ���� �並 �̿��Ͽ� ����Ʈ�信 ���
-						average_indur_Adapter average_indurView = new average_indur_Adapter(
-								getActivity(), R.layout.incall_view, temp_list);
+                        adapterView = new MyListAdapter(getActivity(), R.layout.incall_view, temp_list, "average_indur");
 
 						MyList = (ListView) getView().findViewById(
 								R.id.call_list);
-						MyList.setAdapter(average_indurView);
+						MyList.setAdapter(adapterView);
 
 						break;
 
@@ -648,12 +656,11 @@ public class CallListFragment extends Fragment  {
 						}
 
 						// Ŀ���� �並 �̿��Ͽ� ����Ʈ�信 ���
-						outcount_Adapter OutCallAdapter = new outcount_Adapter(
-								getActivity(), R.layout.incall_view, temp_list);
+                        adapterView = new MyListAdapter(getActivity(), R.layout.incall_view, temp_list, "outcount");
 
 						MyList = (ListView) getView().findViewById(
 								R.id.call_list);
-						MyList.setAdapter(OutCallAdapter);
+						MyList.setAdapter(adapterView);
 
 						break;
 					case 4:
@@ -712,12 +719,11 @@ public class CallListFragment extends Fragment  {
 						}
 
 						// Ŀ���� �並 �̿��Ͽ� ����Ʈ�信 ���
-						outdur_Adapter OutDurAdapter = new outdur_Adapter(
-								getActivity(), R.layout.incall_view, temp_list);
+                        adapterView = new MyListAdapter(getActivity(), R.layout.incall_view, temp_list, "outdur");
 
 						MyList = (ListView) getView().findViewById(
 								R.id.call_list);
-						MyList.setAdapter(OutDurAdapter);
+						MyList.setAdapter(adapterView);
 
 						break;
 
@@ -778,12 +784,11 @@ public class CallListFragment extends Fragment  {
 						}
 
 						// Ŀ���� �並 �̿��Ͽ� ����Ʈ�信 ���
-						average_outdur_Adapter average_outdurView = new average_outdur_Adapter(
-								getActivity(), R.layout.incall_view, temp_list);
+                        adapterView = new MyListAdapter(getActivity(), R.layout.incall_view, temp_list, "average_outdur");
 
 						MyList = (ListView) getView().findViewById(
 								R.id.call_list);
-						MyList.setAdapter(average_outdurView);
+						MyList.setAdapter(adapterView);
 
 						break;
 
@@ -838,12 +843,11 @@ public class CallListFragment extends Fragment  {
 						}
 
 						// Ŀ���� �並 �̿��Ͽ� ����Ʈ�信 ���
-						misscount_Adapter missCallAdapter = new misscount_Adapter(
-								getActivity(), R.layout.incall_view, temp_list);
+                        adapterView = new MyListAdapter(getActivity(), R.layout.incall_view, temp_list, "misscount");
 
 						MyList = (ListView) getView().findViewById(
 								R.id.call_list);
-						MyList.setAdapter(missCallAdapter);
+						MyList.setAdapter(adapterView);
 
 						break;
 					}
