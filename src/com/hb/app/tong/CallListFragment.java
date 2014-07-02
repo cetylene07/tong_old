@@ -5,11 +5,17 @@ package com.hb.app.tong;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 import android.content.ContentResolver;
 import android.database.Cursor;
@@ -34,7 +40,6 @@ import android.widget.TextView;
 
 import com.smartstat.info.DateInfo;
 import com.smartstat.info.Info;
-import com.smartstat.listadapter.TotalDurationListAdapter;
 
 public class CallListFragment extends Fragment  {
 	/**
@@ -214,6 +219,18 @@ public class CallListFragment extends Fragment  {
 
 		Cursor c;
 
+
+        /*
+        * 2014.07.02
+        * To sort data in Info class instance...
+        * Test : TreeSet, Array
+        * */
+
+        final TreeMap<Info, Integer> testMap = new TreeMap<Info, Integer>();
+
+//        ArrayList<Info> list = new ArrayList<Info>(); // ��������� ����Ʈ�� ��ü ��
+
+
 		String name = null;
 
 		Cursor cursor = cr.query(CallLog.Calls.CONTENT_URI, null, null, null,
@@ -325,6 +342,7 @@ public class CallListFragment extends Fragment  {
 
 				if (found == false) {
 					list.add(temp); // ���� �߰�
+//                    testSet.add(temp);
 				}
 
 			}
@@ -369,10 +387,13 @@ public class CallListFragment extends Fragment  {
 
 				// ���ű��̿� �߽ű����� �� ���
 				list.get(i).sum_dur = list.get(i).in_dur + list.get(i).out_dur;
+//				t.get(i).sum_dur = list.get(i).in_dur + list.get(i).out_dur;
 
 				list.get(i).sum_dur_percent = list.get(i).sum_dur
 						/ (total_indur + total_outdur) * 100;
 			}
+
+
 
 			cursor.close();
 
@@ -421,30 +442,38 @@ public class CallListFragment extends Fragment  {
 					switch (position) {
 					case 0:
 						// ����
-//						Collections.sort(list, new sumDurCompareDesc());
 
-						/*
-						 * �������� 1���� ���ʴ�� �ְ�, ���� ���� ������ ���� ����� �ǰ� �Ѵ�.
-						 */
-						jj = 1;
-						for (int i = 0; i < list.size() - 1; i++) {
+                        for (int i = 0; i < list.size(); i++) {
+                            int max = i;
+                            for (int j = i + 1; j < list.size(); j++) {
+                                if (list.get(j).sum_dur > list.get(max).sum_dur) {
+                                    max = j;
+                                }
+                            }
+                            Info trans = new Info();
+                            trans = list.get(i);
+                            list.set(i, list.get(max));
+                            list.set(max, trans);
+                        }
 
-							list.get(i).rank = jj;
-							if (list.get(i + 1).getSum_dur() != list.get(i)
-									.getSum_dur()) {
-								jj++;
-							}
-						}
+                        // ������ �����ϴ� �ݺ���
+                        jj = 1;
+                        for (int i = 0; i < list.size() - 1; i++) {
 
+                            list.get(i).rank = jj;
+                            if (list.get(i + 1).sum_dur != list.get(i).sum_dur) {
+                                jj++;
+                            }
+                        }
 
-						// // �� ������ �������� ������ ��� �ڵ��ؾ� �ȴ�.
-//						if (list.get(list.size() - 1).in_dur+list.get(list.size() - 1).out_dur !=
-//						list.get(list.size() - 1).in_dur+list.get(list.size()- 1).out_dur) {
-//
-//						list.get(list.size() - 1).rank = jj + 1;
-//						} else {
-//						list.get(list.size() - 1).rank = jj;
-//						}
+                        // �� ������ �������� ������ ��� �ڵ��ؾ� �ȴ�.
+                        if (list.get(list.size() - 1).sum_dur != list.get(list
+                                .size() - 1).sum_dur) {
+
+                            list.get(list.size() - 1).rank = jj + 1;
+                        } else {
+                            list.get(list.size() - 1).rank = jj;
+                        }
 
 						// 0�̻� temp_list�� �����Ѵ�.
 						for (int i = 0; i < list.size(); i++) {
@@ -453,12 +482,6 @@ public class CallListFragment extends Fragment  {
 
 							}
 						}
-
-
-
-						// Ŀ���� �並 �̿��Ͽ� ����Ʈ�信 ���
-						TotalDurationListAdapter MyAdapter = new TotalDurationListAdapter(
-								getActivity(), R.layout.incall_view, temp_list);
 
                         adapterView = new MyListAdapter(getActivity(), R.layout.incall_view, temp_list, "sumdur");
 
@@ -1024,14 +1047,5 @@ public class CallListFragment extends Fragment  {
 	// }
 	// }
 
-	static class sumDurCompareDesc implements Comparator<Info> {
 
-		@Override
-		public int compare(Info one, Info two) {
-			// TODO Auto-generated method stub
-
-			return (two.getSum_dur() > one.getSum_dur() ? 1 : 0);
-		}
-
-	}
 }

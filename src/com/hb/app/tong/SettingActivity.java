@@ -1,5 +1,5 @@
 /*
- * ¸Þ´º ÅÇÀ» ´­·¶À» ¶§, ÇÁ·Î±×·¥ ¼Ò°³ È­¸é
+ * ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½, ï¿½ï¿½ï¿½Î±×·ï¿½ ï¿½Ò°ï¿½ È­ï¿½ï¿½
  */
 
 package com.hb.app.tong;
@@ -34,7 +34,7 @@ public class SettingActivity extends ListActivity {
 
 		ListView aboutList = (ListView) findViewById(android.R.id.list);
 //		aboutList.setBackgroundColor(Color.parseColor("#f6f7ef"));
-		aboutList.setFastScrollEnabled(false);// ¸®½ºÆ®°¡ ¿òÁ÷ÀÌÁö ¾Ê°Ô ÇÏ·Á°í ÇÏ´Â°Çµ¥.....
+		aboutList.setFastScrollEnabled(false);// ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê°ï¿½ ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½Ï´Â°Çµï¿½.....
 
 		List<Map<String, String>> dataList = this.createData();
 
@@ -45,7 +45,7 @@ public class SettingActivity extends ListActivity {
 				AlertDialog.Builder dlg = new AlertDialog.Builder(SettingActivity.this);
 
 				switch (position) {
-				case 0: // ¹öÀü¿¡ °üÇÑ ¿ª»ç
+				case 0: // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 					dlg.setMessage(R.string.history	);
 
 					// dlg.setIcon(R.drawable.first);
@@ -61,17 +61,17 @@ public class SettingActivity extends ListActivity {
 							});
 					dlg.show();
 					break;
-				case 1: // Á¦ÀÛÀÚ
+				case 1: // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					break;
-				case 2: // ÀÌ¸ÞÀÏ
+				case 2: // ï¿½Ì¸ï¿½ï¿½ï¿½
 					break;
-				case 3: // È¨ÆäÀÌÁö
+				case 3: // È¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					break;
-				case 4:	//Ãß°¡ »çÇ×
+				case 4:	//ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½
 					dlg.setMessage(getString(R.string.more)	);
 
 					// dlg.setIcon(R.drawable.first);
-					dlg.setPositiveButton("È®ÀÎ",
+					dlg.setPositiveButton("È®ï¿½ï¿½",
 							new DialogInterface.OnClickListener() {
 
 								@Override
@@ -118,7 +118,7 @@ public class SettingActivity extends ListActivity {
 
 		data = new HashMap<String, String>();
 		data.put("title", "HomePage");
-		data.put("comment", "http://stronguy13.tistory.com/");
+		data.put("comment", "http://kerogrammer.wordpress.com/");
 		retDataList.add(data);
 		
 		data = new HashMap<String, String>();

@@ -6,6 +6,8 @@
 package com.hb.app.tong;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Objects;
 
 import android.R.color;
 import android.content.Context;
@@ -24,10 +26,10 @@ import com.smartstat.info.Info;
 // ������ȭ Ƚ�� ����� Ŭ����
 public class MyListAdapter extends BaseAdapter implements OnItemClickListener {
 	/**
-	 * @uml.property  name="maincon"
+	 * @uml.property  name="context"
 	 * @uml.associationEnd  multiplicity="(1 1)"
 	 */
-	Context maincon;
+	Context context;
 	/**
 	 * @uml.property  name="inflater"
 	 * @uml.associationEnd  multiplicity="(1 1)"
@@ -63,8 +65,8 @@ public class MyListAdapter extends BaseAdapter implements OnItemClickListener {
 
     String attribute;
 
-	public MyListAdapter(Context context, int alayout, ArrayList<Info> alist, String _attribute) {
-		maincon = context;
+	public MyListAdapter(Context _context, int alayout, ArrayList<Info> alist, String _attribute) {
+		context = _context;
 		Inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		arSrc = alist;
@@ -122,7 +124,7 @@ public class MyListAdapter extends BaseAdapter implements OnItemClickListener {
             debug = secToHourMinuteSecond(arSrc.get(position).sum_dur);
         }
         else if(attribute == "incount")    {
-            debug = String.valueOf(arSrc.get(position).in_count + " sec");
+            debug = String.valueOf(arSrc.get(position).in_count) + " " + context.getString(R.string.times);
         }
         else if(attribute == "indur")    {
             debug = secToHourMinuteSecond(arSrc.get(position).in_dur);
@@ -137,10 +139,10 @@ public class MyListAdapter extends BaseAdapter implements OnItemClickListener {
             debug = secToHourMinuteSecond(arSrc.get(position).average_out_dur);
         }
         else if(attribute == "misscount")  {
-            debug = String.valueOf((int) arSrc.get(position).miss_count + " sec");
+            debug = String.valueOf((int) arSrc.get(position).miss_count) + " " + context.getString(R.string.times);
         }
         else if(attribute == "outcount")  {
-            debug = String.valueOf((int) arSrc.get(position).out_count + " sec");
+            debug = String.valueOf((int) arSrc.get(position).out_count) + " " + context.getString(R.string.times);
         }
 		count.setText(debug);
 		return convertView;
@@ -157,3 +159,5 @@ public class MyListAdapter extends BaseAdapter implements OnItemClickListener {
 	}
 
 }
+
+
