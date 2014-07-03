@@ -26,27 +26,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.hb.app.tong.CallListActivity"
-            android:label="callActivity" />
-        <activity
-            android:name="com.hb.app.tong.textActivity"
-            android:label="textActivity" />
-        <activity
-            android:name="com.hb.app.tong.Report"
-            android:label="report" />
+
         <activity
             android:name="com.hb.app.tong.SettingActivity"
             android:label="about" />
-        <activity
-            android:name="com.hb.app.tong.Rank"
-            android:label="rank" />
-        <activity
-            android:name="com.hb.app.tong.GraphActivity"
-            android:label="TimeActivity" />
-        <activity
-            android:name="com.hb.app.tong.extendActivity"
-            android:label="ExtendActivity" />
+
+
 
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -54,10 +39,7 @@
             <category android:name="android.intent.category.SAMPLE_CODE" />
         </intent-filter>
         <!-- </activity> -->
-        <activity
-            android:name="com.hb.app.tong.PrefActivity"
-            android:label="@string/title_activity_preference" >
-        </activity>
+
         <activity
             android:name="com.hb.app.tong.SetPreferenceActivity"
             android:label="@string/title_activity_set_preference" >

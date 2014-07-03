@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Hello World, TongActivity!</string>
     <string name="app_name">Tong</string>
     <string name="choose_call_opt">Choice</string>
 
@@ -43,11 +42,6 @@
         <item>2</item>
     </string-array>
 
-    <string name="history">Version 2.2(10/27/2013)\nSupported up to HoneyComb </string>
-    <string name="Rank5">Best Friend</string>
-    <string name="Rank4">Friend</string>
-    <string name="Rank3">Acquaintance</string>
-    <string name="Rank2">Who?</string>
     <string name="TotalCallTime">Total Call Time</string>
     <string name="Average">Average</string>
     <string name="sec"> sec</string>
@@ -72,7 +66,6 @@
     <string name="black">Black</string>
     <string name="title_activity_preference">PreferenceActivity</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
     <string name="title_activity_set_preference">SetPreferenceActivity</string>
 
 </resources>

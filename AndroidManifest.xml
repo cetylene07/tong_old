@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hb.app.tong"
-    android:versionCode="220"
-    android:versionName="2.2" >
+    android:versionCode="300"
+    android:versionName="3.0" >
 
-    <!-- 안드로이드 2.1(Level 7)부터 설치가능...하지만 이 프로그램은 2.3(Level 10)을 기준으로 작성됨 -->
-    <uses-sdk android:minSdkVersion="13" />
+    <!-- Minimun version is API16(android 4.1.2) -->
+    <uses-sdk android:minSdkVersion="16" />
 
     <!-- 퍼미션을 설정하는 곳 -->
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -26,27 +27,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.hb.app.tong.CallListActivity"
-            android:label="callActivity" />
-        <activity
-            android:name="com.hb.app.tong.textActivity"
-            android:label="textActivity" />
-        <activity
-            android:name="com.hb.app.tong.Report"
-            android:label="report" />
+
         <activity
             android:name="com.hb.app.tong.SettingActivity"
             android:label="about" />
-        <activity
-            android:name="com.hb.app.tong.Rank"
-            android:label="rank" />
-        <activity
-            android:name="com.hb.app.tong.GraphActivity"
-            android:label="TimeActivity" />
-        <activity
-            android:name="com.hb.app.tong.extendActivity"
-            android:label="ExtendActivity" />
+
 
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -54,10 +39,6 @@
             <category android:name="android.intent.category.SAMPLE_CODE" />
         </intent-filter>
         <!-- </activity> -->
-        <activity
-            android:name="com.hb.app.tong.PrefActivity"
-            android:label="@string/title_activity_preference" >
-        </activity>
         <activity
             android:name="com.hb.app.tong.SetPreferenceActivity"
             android:label="@string/title_activity_set_preference" >
