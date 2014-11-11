@@ -15,38 +15,15 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TabHost;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class TongActivity extends FragmentActivity implements
 		ActionBar.TabListener {
-	/**
-	 * @uml.property  name="mTab"
-	 * @uml.associationEnd  readOnly="true"
-	 */
 	TabHost mTab;
-	/**
-	 * @uml.property  name="tabHost"
-	 * @uml.associationEnd  readOnly="true"
-	 */
 	TabHost tabHost;
-	/**
-	 * @uml.property  name="mSectionsPagerAdapter"
-	 * @uml.associationEnd  inverse="this$0:com.hb.app.tong.TongActivity$SectionsPagerAdapter"
-	 */
 	SectionsPagerAdapter mSectionsPagerAdapter;
-
-	/**
-	 * The   {@link ViewPager}   that will host the section contents.
-	 * @uml.property  name="mViewPager"
-	 * @uml.associationEnd  
-	 */
 	ViewPager mViewPager;
 
 	/** Called when the activity is first created. */
@@ -55,8 +32,6 @@ public class TongActivity extends FragmentActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.viewpager);
 
-		
-		
 		// Set up the action bar.
 		final ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -107,15 +82,13 @@ public class TongActivity extends FragmentActivity implements
 		Intent intent;
 		switch (item.getItemId()) {
 		case 1:
-//			Intent intent = new Intent(TongActivity.this, SettingActivity.class);
-//			Intent intent = new Intent(TongActivity.this, PrefActivity.class);
 			intent = new Intent(TongActivity.this, SetPreferenceActivity.class);
 			startActivity(intent);
 			return true;
-		case 2:
-			intent = new Intent(TongActivity.this, SettingActivity.class);
-			startActivity(intent);
-			return true;
+			// case 2:
+			// intent = new Intent(TongActivity.this, SettingActivity.class);
+			// startActivity(intent);
+			// return true;
 		}
 		return false;
 	}
@@ -153,22 +126,22 @@ public class TongActivity extends FragmentActivity implements
 			// getItem is called to instantiate the fragment for the given page.
 			// Return a DummySectionFragment (defined as a static inner class
 			// below) with the page number as its lone argument.
-//			Fragment fragment = new CallListFragment();
+			// Fragment fragment = new CallListFragment();
 			switch (position) {
 			case 0:
 				return new CallListFragment();
-								
+
 			case 1:
 				return new GraphFragment();
-				
+
 			}
 			return null;
-			
+
 			// Bundle args = new Bundle();
 			// args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position +
 			// 1);
 			// fragment.setArguments(args);
-//			return fragment;
+			// return fragment;
 		}
 
 		@Override

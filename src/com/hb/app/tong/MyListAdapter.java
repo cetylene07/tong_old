@@ -1,17 +1,8 @@
-/*
-* MyListAdapter is CustomListAdapter
-* */
-
-
 package com.hb.app.tong;
 
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Objects;
 
-import android.R.color;
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,44 +14,14 @@ import android.widget.TextView;
 
 import com.smartstat.info.Info;
 
-// ������ȭ Ƚ�� ����� Ŭ����
 public class MyListAdapter extends BaseAdapter implements OnItemClickListener {
-	/**
-	 * @uml.property  name="context"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
 	Context context;
-	/**
-	 * @uml.property  name="inflater"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
 	LayoutInflater Inflater;
-	/**
-	 * @uml.property  name="arSrc"
-	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="com.smartstat.info.Info"
-	 */
 	ArrayList<Info> arSrc;
-	/**
-	 * @uml.property  name="layout"
-	 */
 	int layout;
-	/**
-	 * @uml.property  name="s_value"
-	 */
 	String s_value;
-	/**
-	 * @uml.property  name="rank"
-	 * @uml.associationEnd  
-	 */
 	TextView rank;
-	/**
-	 * @uml.property  name="debug"
-	 */
 	String debug;
-	/**
-	 * @uml.property  name="image"
-	 * @uml.associationEnd  
-	 */
 	ImageView image;
 
     String attribute;
@@ -97,7 +58,7 @@ public class MyListAdapter extends BaseAdapter implements OnItemClickListener {
             hourText = hour + "시간 ";
         }
         if(minute > 0)  {
-            minuteText = minute + "분 ";
+            minuteText = minute + "분";
         }
         if(second > 0)  {
             secondText = second + "초";
@@ -109,7 +70,6 @@ public class MyListAdapter extends BaseAdapter implements OnItemClickListener {
         return secToHourMinuteSecond(time);
     }
 
-	// �� �׸��� �� ��
 	public View getView(int position, View convertView, ViewGroup parent) {
 
         if (convertView == null) {
