@@ -186,18 +186,19 @@ containing a value of this type.
         public static final int extend_view=0x7f030005;
         public static final int fragment_call_list=0x7f030006;
         public static final int fragment_graph=0x7f030007;
-        public static final int gradient_1=0x7f030008;
-        public static final int incall_view=0x7f030009;
-        public static final int incall_view_old=0x7f03000a;
-        public static final int inrank_view=0x7f03000b;
-        public static final int item_view=0x7f03000c;
-        public static final int main=0x7f03000d;
-        public static final int rank=0x7f03000e;
-        public static final int report=0x7f03000f;
-        public static final int simple_main=0x7f030010;
-        public static final int sms_view=0x7f030011;
-        public static final int title=0x7f030012;
-        public static final int viewpager=0x7f030013;
+        public static final int fragment_map=0x7f030008;
+        public static final int gradient_1=0x7f030009;
+        public static final int incall_view=0x7f03000a;
+        public static final int incall_view_old=0x7f03000b;
+        public static final int inrank_view=0x7f03000c;
+        public static final int item_view=0x7f03000d;
+        public static final int main=0x7f03000e;
+        public static final int rank=0x7f03000f;
+        public static final int report=0x7f030010;
+        public static final int simple_main=0x7f030011;
+        public static final int sms_view=0x7f030012;
+        public static final int title=0x7f030013;
+        public static final int viewpager=0x7f030014;
     }
     public static final class menu {
         public static final int preference=0x7f090000;
@@ -210,20 +211,20 @@ containing a value of this type.
         public static final int Rank4=0x7f06000c;
         public static final int Rank5=0x7f06000b;
         public static final int TotalCallTime=0x7f06000f;
-        public static final int action_settings=0x7f060026;
+        public static final int action_settings=0x7f060027;
         public static final int app_name=0x7f060001;
-        public static final int black=0x7f060024;
+        public static final int black=0x7f060025;
         public static final int choose_call_opt=0x7f060002;
         public static final int confirm=0x7f060012;
         public static final int dateSliderTitle=0x7f06001a;
-        public static final int english=0x7f060020;
+        public static final int english=0x7f060021;
         public static final int fri=0x7f060007;
         public static final int hello=0x7f060000;
-        public static final int hello_world=0x7f060027;
+        public static final int hello_world=0x7f060028;
         public static final int history=0x7f06000a;
         public static final int information=0x7f06001b;
-        public static final int korean=0x7f060021;
-        public static final int language=0x7f06001f;
+        public static final int korean=0x7f060022;
+        public static final int language=0x7f060020;
         /**  차트에서 X 축의 각 항목 이름 
  차트에서 X 축의 각 항목 이름 
          */
@@ -237,17 +238,18 @@ containing a value of this type.
         public static final int sat=0x7f060008;
         public static final int sec=0x7f060011;
         public static final int sun=0x7f060009;
-        public static final int theme=0x7f060022;
+        public static final int theme=0x7f060023;
         public static final int thr=0x7f060006;
         public static final int times=0x7f060016;
-        public static final int title_activity_preference=0x7f060025;
-        public static final int title_activity_set_preference=0x7f060028;
+        public static final int title_activity_preference=0x7f060026;
+        public static final int title_activity_set_preference=0x7f060029;
         public static final int title_section1=0x7f06001d;
         public static final int title_section2=0x7f06001e;
+        public static final int title_section3=0x7f06001f;
         public static final int totalTime=0x7f060013;
         public static final int tus=0x7f060004;
         public static final int wed=0x7f060005;
-        public static final int white=0x7f060023;
+        public static final int white=0x7f060024;
     }
     public static final class style {
         public static final int Scroller=0x7f080000;

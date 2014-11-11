@@ -64,6 +64,7 @@
     <string name="preference">preference</string>
     <string name="title_section1">Statistics</string>
     <string name="title_section2">Graph</string>
+    <string name="title_section3">Graph</string>
     <string name="language">Language</string>
     <string name="english">English</string>
     <string name="korean">Korean</string>

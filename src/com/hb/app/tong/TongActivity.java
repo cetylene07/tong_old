@@ -128,6 +128,8 @@ public class TongActivity extends FragmentActivity implements
 
 			case 1:
 				return new GraphFragment();
+			case 2:
+				return new MapFragment();
 
 			}
 			return null;
@@ -142,7 +144,7 @@ public class TongActivity extends FragmentActivity implements
 		@Override
 		public int getCount() {
 			// Show 3 total pages.
-			return 2;
+			return 3;
 		}
 
 		@Override
@@ -153,6 +155,9 @@ public class TongActivity extends FragmentActivity implements
 				return getString(R.string.title_section1).toUpperCase(l);
 			case 1:
 				return getString(R.string.title_section2).toUpperCase(l);
+			case 2:
+				return getString(R.string.title_section3).toUpperCase(l);
+			
 			}
 			return null;
 		}

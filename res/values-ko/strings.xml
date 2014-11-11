@@ -27,8 +27,7 @@
         <item>요일별 통화 길이</item>
         <item>일별 통화 길이</item>
     </string-array>
-    
-        <string-array name="themeArray">
+    <string-array name="themeArray">
         <item>흰색</item>
         <item>검정색</item>
     </string-array>
@@ -89,15 +88,15 @@
 							 "♣ 페이스북 연동\n"
 							 "♣ 그 외 수많은 기능..\n"</string>
     <string name="information">정보</string>
-     <string name="preference">설정</string>
+    <string name="preference">설정</string>
     <string name="title_section1">통계</string>
     <string name="title_section2">그래프</string>
+    <string name="title_section3">지도</string>
+    <string name="language">언어</string>
+    <string name="english">영어</string>
+    <string name="korean">한국어</string>
+    <string name="theme">테마</string>
+    <string name="white">흰색</string>
+    <string name="black">검정색</string>
 
-           <string name="language">언어</string>
-        <string name="english">영어</string>
-         <string name="korean">한국어</string>
-          <string name="theme">테마</string>
-           <string name="white">흰색</string>
-            <string name="black">검정색</string>
-    
 </resources>
