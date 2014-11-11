@@ -2,7 +2,7 @@
 <resources>
 
     <string name="hello">Hello World, TongActivity!</string>
-    <string name="app_name">Tong</string>
+    <string name="app_name">통</string>
     <string name="choose_call_opt">원하는 통화옵션을 선택하세요</string>
 
     <!-- 차트에서 X 축의 각 항목 이름 -->
