@@ -72,7 +72,6 @@ public class TongActivity extends FragmentActivity implements
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
 		menu.add(0, 1, 0, R.string.preference);
-		menu.add(0, 2, 0, R.string.information);
 
 		return true;
 	}
@@ -85,10 +84,6 @@ public class TongActivity extends FragmentActivity implements
 			intent = new Intent(TongActivity.this, SetPreferenceActivity.class);
 			startActivity(intent);
 			return true;
-			// case 2:
-			// intent = new Intent(TongActivity.this, SettingActivity.class);
-			// startActivity(intent);
-			// return true;
 		}
 		return false;
 	}
