@@ -23,7 +23,7 @@
             android:text="&lt;" />
 
         <Button
-            android:id="@+id/btnSelectDate"
+            android:id="@+id/btnListMonth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="8"
@@ -34,7 +34,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:enabled="true"
             android:text=">" />
+
     </LinearLayout>
 
     <!-- 전체량과 평균량을 알려주는 서브 텍스트 레이아웃 -->

@@ -105,7 +105,7 @@ containing a value of this type.
         public static final int btnAfterMonthGraph=0x7f0a001a;
         public static final int btnBeforeMonth=0x7f0a000a;
         public static final int btnBeforeMonthGraph=0x7f0a0018;
-        public static final int btnSelectDate=0x7f0a000b;
+        public static final int btnListMonth=0x7f0a000b;
         public static final int btnSelectDateGraph=0x7f0a0019;
         public static final int callView=0x7f0a0000;
         public static final int call_image=0x7f0a001e;
