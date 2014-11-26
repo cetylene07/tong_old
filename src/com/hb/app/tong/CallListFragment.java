@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 
+import model.tong.DataBases;
 import model.tong.DbOpenHelper;
 import android.content.ContentResolver;
 import android.database.Cursor;
@@ -36,7 +37,6 @@ public class CallListFragment extends Fragment {
 	ArrayList<Info> list = new ArrayList<Info>();
 
 	ArrayList<Info> temp_list = new ArrayList<Info>();
-	ArrayList<DateInfo> date_list = new ArrayList<DateInfo>();
 	double total_dur = 0;
 	double total_incall_count = 0;
 	double total_outcall_count = 0;
@@ -73,6 +73,8 @@ public class CallListFragment extends Fragment {
 			ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME
 
 	};
+	
+	
 
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
@@ -91,12 +93,10 @@ public class CallListFragment extends Fragment {
 	public void onStart() {
 		super.onStart();
 
-		// 2014.06.30
 		// fix duplicate data when resume activity
 		temp_list.clear();
 		list.clear();
 
-		// 5.16
 		linear = (LinearLayout) View.inflate(getActivity(), R.layout.item_view,
 				null);
 
@@ -130,18 +130,16 @@ public class CallListFragment extends Fragment {
 			mDbOpenHelper = new DbOpenHelper(this.getActivity());
 			mDbOpenHelper.open();
 
-			while (cursor.moveToNext()) { // cursor占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙 占쏙옙占쏙옙
+			while (cursor.moveToNext()) { 
 
 				Info temp = new Info();
-				Iterator<Info> it = list.iterator(); // iterator占쏙옙 占쏙옙환
+				Iterator<Info> it = list.iterator();
 
-				name = cursor.getString(nameidx); // 占싱몌옙占쏙옙 占쏙옙占쌘울옙占쏙옙 占쏙옙환
+				name = cursor.getString(nameidx); 
 				number = cursor.getString(numidx);
 
 				if (name == null) {
-					name = cursor.getString(numidx); // 占싱몌옙占쏙옙
-														// 占쏙옙占쏙옙占쏙옙占�占쏙옙占쏙옙占쏙옙
-														// 占쏙옙호占쏙옙 占쏙옙占쏙옙
+					name = cursor.getString(numidx); 
 				}
 
 				temp.setName(name);
@@ -161,12 +159,8 @@ public class CallListFragment extends Fragment {
 
 				int type = cursor.getInt(typeidx);
 
-				// Log.d("test", cursor.getString(typeidx));
-
-				String stype;
 				switch (type) {
 				case CallLog.Calls.INCOMING_TYPE:
-					stype = "占쏙옙占쏙옙";
 					total_incall_count++;
 					total_indur += cursor.getInt(duridx);
 
@@ -177,14 +171,12 @@ public class CallListFragment extends Fragment {
 					break;
 				case CallLog.Calls.OUTGOING_TYPE:
 					total_outcall_count++;
-					stype = "占쌩쏙옙";
 					temp.inCreaseOutCount();
 					total_outdur += cursor.getInt(duridx);
 					temp.setOut_dur(temp.getOut_dur() + cursor.getInt(duridx));
 					temp.setSum_dur(temp.getSum_dur() + cursor.getInt(duridx));
 					break;
 				case CallLog.Calls.MISSED_TYPE:
-					stype = "占쏙옙占쏙옙占쏙옙";
 					total_miss++;
 					temp.inCreaseMissCount();
 					break;
@@ -207,6 +199,20 @@ public class CallListFragment extends Fragment {
 						cursor.getString(typeidx));
 
 			}
+			
+			Cursor t = mDbOpenHelper.getAllColumns();
+			Log.d("COUNT", t.getCount()+"");
+			t.moveToFirst();
+//			while(t.moveToNext())	{
+//				Log.d("CP TEST",  t.getString(t.getColumnIndex(DataBases.CreateDB.callID))+ "/" + 
+//						t.getString(t.getColumnIndex(DataBases.CreateDB.NAME)) + "/" + 
+//						formatter.format(new Date(t.getLong(t.getColumnIndex(DataBases.CreateDB.DATE)))));
+//			}
+			
+			
+			
+			
+			
 			total_dur = total_indur + total_outdur;
 
 			for (int i = 0; i < list.size(); i++) {
@@ -286,6 +292,8 @@ public class CallListFragment extends Fragment {
 					switch (position) {
 					case 0:
 
+						
+						
 						for (int i = 0; i < list.size(); i++) {
 							int max = i;
 							for (int j = i + 1; j < list.size(); j++) {
@@ -299,7 +307,6 @@ public class CallListFragment extends Fragment {
 							list.set(max, trans);
 						}
 
-						// 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占싹댐옙 占쌥븝옙占쏙옙
 						jj = 1;
 						for (int i = 0; i < list.size() - 1; i++) {
 
@@ -310,8 +317,6 @@ public class CallListFragment extends Fragment {
 						}
 						
 
-						// 占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占�占쌘듸옙占쌔억옙
-						// 占싫댐옙.
 						if (list.get(list.size() - 1).sum_dur != list.get(list
 								.size() - 1).sum_dur) {
 

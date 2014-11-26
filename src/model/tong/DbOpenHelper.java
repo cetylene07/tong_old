@@ -88,5 +88,9 @@ public class DbOpenHelper {
 		return mDB.query(DataBases.CreateDB._TABLENAME, null, null, null, null, null, null);
 	}
 	
+	public Cursor getAllSums()	{
+		return null;
+	}
+	
 	
 } 

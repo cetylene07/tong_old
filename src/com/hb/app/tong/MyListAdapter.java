@@ -2,7 +2,10 @@ package com.hb.app.tong;
 
 import java.util.ArrayList;
 
+import model.tong.DataBases;
+
 import android.content.Context;
+import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,9 +26,21 @@ public class MyListAdapter extends BaseAdapter implements OnItemClickListener {
 	TextView rank;
 	String debug;
 	ImageView image;
-
+	Cursor cursor;
     String attribute;
 
+    
+    
+    public MyListAdapter(Context _context, int alayout, ArrayList<Info> alist, String _attribute, Cursor _cursor) {
+		context = _context;
+		Inflater = (LayoutInflater) context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		arSrc = alist;
+		layout = alayout;
+        attribute = _attribute;
+        cursor = _cursor;
+    }
+    
 	public MyListAdapter(Context _context, int alayout, ArrayList<Info> alist, String _attribute) {
 		context = _context;
 		Inflater = (LayoutInflater) context
@@ -75,6 +90,8 @@ public class MyListAdapter extends BaseAdapter implements OnItemClickListener {
         if (convertView == null) {
             convertView = Inflater.inflate(layout, parent, false);
         }
+        
+        
         TextView name = (TextView) convertView.findViewById(R.id.call_name);
         name.setText(arSrc.get(position).name);
 		TextView count = (TextView) convertView.findViewById(R.id.call_value);
