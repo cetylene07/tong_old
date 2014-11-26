@@ -243,9 +243,7 @@ public class CallListFragment extends Fragment {
 				list.get(i).average_out_dur_percent = list.get(i).average_out_dur
 						/ total_average_out_dur * 100;
 
-				// 占쏙옙占신깍옙占싱울옙 占쌩신깍옙占쏙옙占쏙옙 占쏙옙 占쏙옙占�
 				list.get(i).sum_dur = list.get(i).in_dur + list.get(i).out_dur;
-				// t.get(i).sum_dur = list.get(i).in_dur + list.get(i).out_dur;
 
 				list.get(i).sum_dur_percent = list.get(i).sum_dur
 						/ (total_indur + total_outdur) * 100;
@@ -253,7 +251,7 @@ public class CallListFragment extends Fragment {
 
 			cursor.close();
 
-			// 占쏙옙占실놂옙
+			// 스피너 이벤트
 			Spinner spin = (Spinner) getView().findViewById(R.id.call_spinner1);
 			spin.setPrompt("Choice Option");
 			adspin = ArrayAdapter.createFromResource(getActivity(),
@@ -262,19 +260,10 @@ public class CallListFragment extends Fragment {
 			spin.setAdapter(adspin);
 			spin.setOnItemSelectedListener(new OnItemSelectedListener() {
 
-				// 占쏙옙占실놂옙 占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占싶울옙 占쏙옙占�
 				public void onItemSelected(AdapterView<?> parent, View view,
 						int position, long id) {
 
 					String s_value;
-					TextView sub_text1 = (TextView) getView().findViewById(
-							R.id.sub_call_text1);
-					TextView sub_value1 = (TextView) getView().findViewById(
-							R.id.sub_call_value1);
-					TextView sub_text2 = (TextView) getView().findViewById(
-							R.id.sub_call_text2);
-					TextView sub_value2 = (TextView) getView().findViewById(
-							R.id.sub_call_value2);
 
 					OnItemClickListener listener = new OnItemClickListener() {
 
@@ -287,7 +276,7 @@ public class CallListFragment extends Fragment {
 
 						}
 
-					}; // 占쏙옙화占쏙옙占쏙옙 占쌀쏙옙占쌘듸옙 占쏙옙!
+					}; 
 
 					// temp_list 占쏙옙占쏙옙 占쏙옙占�
 					for (int i = temp_list.size() - 1; i >= 0; i--) {
@@ -296,32 +285,6 @@ public class CallListFragment extends Fragment {
 
 					switch (position) {
 					case 0:
-						ContentResolver cr = getActivity().getContentResolver();
-
-						String[] projection = new String[] {
-								CallLog.Calls.CACHED_NAME, CallLog.Calls.NUMBER };
-						String selection = CallLog.Calls.TYPE + "=?"; // where절
-																		// 타입이
-						String[] selectionArgs = { CallLog.Calls.INCOMING_TYPE
-								+ "" };
-						Cursor cursor = cr.query(CallLog.Calls.CONTENT_URI,
-								projection, selection, selectionArgs,
-								CallLog.Calls.DEFAULT_SORT_ORDER);
-
-						if (cursor == null || cursor.getCount() == 0)
-							return;
-
-						cursor.moveToFirst();
-						while (cursor.moveToNext()) {
-							String t = cursor.getString(cursor
-									.getColumnIndex(CallLog.Calls.CACHED_NAME));
-							if (t == null)
-								t = cursor.getString(cursor
-										.getColumnIndex(CallLog.Calls.NUMBER));
-							Log.i("cursor", t + "");
-						}
-
-						// 占쏙옙占쏙옙
 
 						for (int i = 0; i < list.size(); i++) {
 							int max = i;
@@ -379,14 +342,7 @@ public class CallListFragment extends Fragment {
 						break;
 					case 1:
 
-						sub_text1.setText("占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙 : ");
-						sub_value1.setText(String.valueOf((int) total_indur)
-								+ "sec");
-						sub_text2.setText("1占싸댐옙 占쏙옙占�占쏙옙占쏙옙 占쏙옙占쏙옙 : ");
-						// 占쌜쇽옙트 占쌀쇽옙占쏙옙 2占쌘몌옙占쏙옙占쏙옙 표占쏙옙占싹댐옙 占쏙옙占�
-						s_value = String.format("%.2f",
-								total_indur / list.size());
-						sub_value2.setText(s_value + "sec");
+
 
 						for (int i = 0; i < list.size(); i++) {
 							int max = i;
@@ -443,21 +399,6 @@ public class CallListFragment extends Fragment {
 
 					case 2:
 
-						sub_text1.setText("占쏙옙 占쏙옙占�占쏙옙占쏙옙 占쏙옙占쏙옙 : ");
-						sub_value1.setText(String
-								.valueOf((int) total_average_in_dur) + "占쏙옙");
-						sub_text2.setText("1占싸댐옙 占쏙옙占�占쏙옙占쏙옙 占쏙옙占쏙옙 : ");
-						// 占쌜쇽옙트 占쌀쇽옙占쏙옙 2占쌘몌옙占쏙옙占쏙옙 표占쏙옙占싹댐옙 占쏙옙占�
-						s_value = String.format("%.2f", total_average_in_dur
-								/ list.size());
-						sub_value2.setText(s_value + "占쏙옙");
-
-						// call_text = (TextView)
-						// getView().findViewById(R.id.call_text);
-						// call_text
-						// .setText("占쏙옙占쏙옙        占싱몌옙                占쏙옙欖占쏙옙킥占쏙옙占�            占쏙옙占쏙옙");
-						// 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占싱울옙占싹울옙 占쏙옙占신깍옙占싱몌옙
-						// 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙(큰占쏙옙 占쏙옙占쏙옙占쏙옙占�
 						for (int i = 0; i < list.size(); i++) {
 							int max = i;
 							for (int j = i + 1; j < list.size(); j++) {
@@ -512,21 +453,7 @@ public class CallListFragment extends Fragment {
 
 					case 3:
 
-						sub_text1.setText("占쏙옙 占쌩쏙옙 회占쏙옙 : ");
-						sub_value1.setText(String
-								.valueOf((int) total_outcall_count) + "회");
-						sub_text2.setText("1占싸댐옙 占쏙옙占�占쌩쏙옙 회占쏙옙 : ");
-						// 占쌜쇽옙트 占쌀쇽옙占쏙옙 2占쌘몌옙占쏙옙占쏙옙 표占쏙옙占싹댐옙 占쏙옙占�
-						s_value = String.format("%.2f", total_outcall_count
-								/ list.size());
-						sub_value2.setText(s_value + "회");
-
-						// call_text = (TextView)
-						// getView().findViewById(R.id.call_text);
-						// call_text
-						// .setText("占쏙옙占쏙옙        占싱몌옙                    占쌩쏙옙횟占쏙옙             占쏙옙占쏙옙");
-						// 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占싱울옙占싹울옙 占쌩쏙옙횟占쏙옙占쏙옙
-						// 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙(큰占쏙옙 占쏙옙占쏙옙占쏙옙占�
+		
 						for (int i = 0; i < list.size(); i++) {
 							int max = i;
 							for (int j = i + 1; j < list.size(); j++) {
@@ -578,21 +505,7 @@ public class CallListFragment extends Fragment {
 						break;
 					case 4:
 
-						sub_text1.setText("占쏙옙 占쌩쏙옙 占쏙옙占쏙옙 : ");
-						sub_value1.setText(String.valueOf((int) total_outdur)
-								+ "占쏙옙");
-						sub_text2.setText("1占싸댐옙 占쏙옙占�占쌩쏙옙 占쏙옙占쏙옙 : ");
-						// 占쌜쇽옙트 占쌀쇽옙占쏙옙 2占쌘몌옙占쏙옙占쏙옙 표占쏙옙占싹댐옙 占쏙옙占�
-						s_value = String.format("%.2f",
-								total_outdur / list.size());
-						sub_value2.setText(s_value + "占쏙옙");
 
-						// call_text = (TextView)
-						// getView().findViewById(R.id.call_text);
-						// call_text
-						// .setText("占쏙옙占쏙옙        占싱몌옙                    占쌩신깍옙占쏙옙             占쏙옙占쏙옙");
-						// 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占싱울옙占싹울옙 占쏙옙占쏙옙횟占쏙옙占쏙옙
-						// 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙(큰占쏙옙 占쏙옙占쏙옙占쏙옙占�
 						for (int i = 0; i < list.size(); i++) {
 							int max = i;
 							for (int j = i + 1; j < list.size(); j++) {
@@ -645,21 +558,7 @@ public class CallListFragment extends Fragment {
 
 					case 5:
 
-						sub_text1.setText("占쏙옙 占쏙옙占�占쌩쏙옙 占쏙옙占쏙옙 : ");
-						sub_value1.setText(String
-								.valueOf((int) total_average_out_dur) + "占쏙옙");
-						sub_text2.setText("1占싸댐옙 占쏙옙占�占쌩쏙옙 占쏙옙占쏙옙 : ");
-						// 占쌜쇽옙트 占쌀쇽옙占쏙옙 2占쌘몌옙占쏙옙占쏙옙 표占쏙옙占싹댐옙 占쏙옙占�
-						s_value = String.format("%.2f", total_average_out_dur
-								/ list.size());
-						sub_value2.setText(s_value + "占쏙옙");
-
-						// call_text = (TextView)
-						// getView().findViewById(R.id.call_text);
-						// call_text
-						// .setText("占쏙옙占쏙옙        占싱몌옙                占쏙옙嵐颯킥占쏙옙占�            占쏙옙占쏙옙");
-						// 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占싱울옙占싹울옙 占쏙옙占신깍옙占싱몌옙
-						// 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙(큰占쏙옙 占쏙옙占쏙옙占쏙옙占�
+	
 						for (int i = 0; i < list.size(); i++) {
 							int max = i;
 							for (int j = i + 1; j < list.size(); j++) {
@@ -714,14 +613,7 @@ public class CallListFragment extends Fragment {
 
 					case 6:
 
-						sub_text1.setText("占쏙옙 占쏙옙占쏙옙 회占쏙옙 : ");
-						sub_value1.setText(String.valueOf((int) total_miss)
-								+ "회");
-						sub_text2.setText("1占싸댐옙 占쏙옙占�占쏙옙占쏙옙 회占쏙옙 : ");
-						// 占쌜쇽옙트 占쌀쇽옙占쏙옙 2占쌘몌옙占쏙옙占쏙옙 표占쏙옙占싹댐옙 占쏙옙占�
-						s_value = String.format("%.2f",
-								total_miss / list.size());
-						sub_value2.setText(s_value + "회");
+
 
 						for (int i = 0; i < list.size(); i++) {
 							int max = i;
