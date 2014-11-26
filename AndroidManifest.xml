@@ -4,11 +4,12 @@
     android:versionCode="300"
     android:versionName="3.0" >
 
-    <!-- 안드로이드 2.1(Level 7)부터 설치가능...하지만 이 프로그램은 2.3(Level 10)을 기준으로 작성됨 -->
-    <uses-sdk android:minSdkVersion="13" />
+    <!-- Minimun version is API16(android 4.1.2) -->
+    <uses-sdk android:minSdkVersion="16" />
 
     <!-- 퍼미션을 설정하는 곳 -->
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -25,6 +26,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
+=======
+
+        <activity
+            android:name="com.hb.app.tong.SettingActivity"
+            android:label="about" />
+
+>>>>>>> origin/master
 
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -32,10 +41,6 @@
             <category android:name="android.intent.category.SAMPLE_CODE" />
         </intent-filter>
         <!-- </activity> -->
-        <activity
-            android:name="com.hb.app.tong.PrefActivity"
-            android:label="@string/title_activity_preference" >
-        </activity>
         <activity
             android:name="com.hb.app.tong.SetPreferenceActivity"
             android:label="@string/title_activity_set_preference" >

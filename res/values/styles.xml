@@ -6,9 +6,58 @@
         <item name="android:background">@drawable/slider_back</item>
         <item name="android:layout_margin">3dp</item>
     </style>
-    
+
+    <style parent="@android:style/Theme" name="AppTheme"/>
+
+
+    <style name="ContactListView">
+
+    <item name="android:verticalScrollbarPosition">right</item>
+
+    <item name="android:fastScrollAlwaysVisible">true</item>
+
+    <item name="android:scrollbarStyle">outsideInset</item>
+
+</style>
+
+    <style name="listViewActivatedStyle"/>
+
+
     <style name="quickContactBadgeStyle">
-        <item name="android:background">@drawable/quickcontact_badge_small</item>
-    </style>
-    <style name="listViewActivatedStyle"/>    
+    <item name="android:background">@drawable/quickcontact_badge_small</item>
+</style>
+
+
+    <style name="searchTextHiglight">
+
+    <item name="android:textStyle">bold</item>
+
+</style>
+
+
+    <style parent="@android:style/TextAppearance.Small" name="addressHeader">
+
+    <item name="android:textAllCaps">true</item>
+
+    <item name="android:textStyle">bold</item>
+
+</style>
+
+
+    <style parent="@android:style/TextAppearance.Medium" name="addressDetail">
+
+    <item name="android:fontFamily">sans-serif-light</item>
+
+    <item name="android:textIsSelectable">true</item>
+
+</style>
+
+
+    <style parent="@android:style/TextAppearance.Large" name="contactNameTitle">
+    <item name="android:textSize">38sp</item>
+    <item name="android:fontFamily">sans-serif</item>
+    <item name="android:textIsSelectable">true</item>
+</style>
+
+    <style name="addressButton"/>
 </resources>
